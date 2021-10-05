@@ -1,0 +1,22 @@
+{
+  "name": "infol3",
+  "version": "1.0.0",
+  "description": "oui",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sylver-Wolf/infoL3.git"
+  },
+  "author": "Raphael",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sylver-Wolf/infoL3/issues"
+  },
+  "homepage": "https://github.com/Sylver-Wolf/infoL3#readme"
+}
