@@ -14,5 +14,11 @@ return [
     '_profiler_router' => [['token'], ['_controller' => 'web_profiler.controller.router::panelAction'], [], [['text', '/router'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], []],
     '_profiler_exception' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::body'], [], [['text', '/exception'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], []],
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], []],
+    'test_controler_index' => [[], ['_controller' => 'App\\Controller\\TestControlerController::index'], [], [['text', '/test/controler/']], [], []],
+    'test_controler_jsp' => [['id'], ['_controller' => 'App\\Controller\\TestControlerController::jsp'], [], [['text', '/jsp'], ['variable', '/', '[^/]++', 'id', true], ['text', '/test/controler']], [], []],
+    'test_controler_new' => [[], ['_controller' => 'App\\Controller\\TestControlerController::new'], [], [['text', '/test/controler/new']], [], []],
+    'test_controler_show' => [['id'], ['_controller' => 'App\\Controller\\TestControlerController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/test/controler']], [], []],
+    'test_controler_edit' => [['id'], ['_controller' => 'App\\Controller\\TestControlerController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/test/controler']], [], []],
+    'test_controler_delete' => [['id'], ['_controller' => 'App\\Controller\\TestControlerController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/test/controler']], [], []],
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '\\d+', 'code', true], ['text', '/_error']], [], []],
 ];
