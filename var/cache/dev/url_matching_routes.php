@@ -13,8 +13,18 @@ return [
         '/_profiler/search_bar' => [[['_route' => '_profiler_search_bar', '_controller' => 'web_profiler.controller.profiler::searchBarAction'], null, null, null, false, false, null]],
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
-        '/test/controler' => [[['_route' => 'test_controler_index', '_controller' => 'App\\Controller\\TestControlerController::index'], null, ['GET' => 0], null, true, false, null]],
-        '/test/controler/new' => [[['_route' => 'test_controler_new', '_controller' => 'App\\Controller\\TestControlerController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/api/login' => [[['_route' => 'api_login', '_controller' => 'App\\Controller\\ApiLoginController::index'], null, null, null, false, false, null]],
+        '/article' => [[['_route' => 'create_article', '_controller' => 'App\\Controller\\ArticleController::createArticle'], null, null, null, false, false, null]],
+        '/home' => [[['_route' => 'home', '_controller' => 'App\\Controller\\HomeController::index'], null, null, null, false, false, null]],
+        '/listesalles' => [[['_route' => 'liste_salles', '_controller' => 'App\\Controller\\ListeSallesController::index'], null, null, null, false, false, null]],
+        '/lobby' => [[['_route' => 'lobby', '_controller' => 'App\\Controller\\LobbyController::index'], null, null, null, false, false, null]],
+        '/hello' => [[['_route' => 'hello_world', '_controller' => 'App\\Controller\\MonController::hello'], null, null, null, false, false, null]],
+        '/profil' => [[['_route' => 'profil', '_controller' => 'App\\Controller\\ProfilController::index'], null, null, null, false, false, null]],
+        '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, null, null, false, false, null]],
+        '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
+        '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
+        '/visiteur' => [[['_route' => 'visiteur', '_controller' => 'App\\Controller\\VisiteurController::index'], null, null, null, false, false, null]],
+        '/' => [[['_route' => 'index', '_controller' => 'App\\Controller\\DefaultController::index'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -33,13 +43,6 @@ return [
                     .')'
                     .'|error/(\\d+)(?:\\.([^/]++))?(*:159)'
                 .')'
-                .'|/test/controler/([^/]++)(?'
-                    .'|/(?'
-                        .'|jsp(*:202)'
-                        .'|edit(*:214)'
-                    .')'
-                    .'|(*:223)'
-                .')'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -49,12 +52,8 @@ return [
         101 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         114 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         124 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        159 => [[['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
-        202 => [[['_route' => 'test_controler_jsp', '_controller' => 'App\\Controller\\TestControlerController::jsp'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        214 => [[['_route' => 'test_controler_edit', '_controller' => 'App\\Controller\\TestControlerController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        223 => [
-            [['_route' => 'test_controler_show', '_controller' => 'App\\Controller\\TestControlerController::show'], ['id'], ['GET' => 0], null, false, true, null],
-            [['_route' => 'test_controler_delete', '_controller' => 'App\\Controller\\TestControlerController::delete'], ['id'], ['POST' => 0], null, false, true, null],
+        159 => [
+            [['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

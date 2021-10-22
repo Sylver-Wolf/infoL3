@@ -1,13 +1,21 @@
 <?php
 
+/**
+ * @see       https://github.com/laminas/laminas-code for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-code/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-code/blob/master/LICENSE.md New BSD License
+ */
+
 namespace Laminas\Code\Generator;
 
 use Laminas\Code\Reflection\MethodReflection;
+use ReflectionMethod;
 
 use function explode;
 use function implode;
 use function is_array;
 use function is_string;
+use function method_exists;
 use function preg_replace;
 use function sprintf;
 use function str_replace;
@@ -15,22 +23,36 @@ use function strlen;
 use function strtolower;
 use function substr;
 use function trim;
-use function uasort;
 
 class MethodGenerator extends AbstractMemberGenerator
 {
-    protected ?DocBlockGenerator $docBlock = null;
-
-    /** @var ParameterGenerator[] */
-    protected array $parameters = [];
-
-    protected string $body = '';
-
-    private ?TypeGenerator $returnType = null;
-
-    private bool $returnsReference = false;
+    /**
+     * @var DocBlockGenerator
+     */
+    protected $docBlock;
 
     /**
+     * @var ParameterGenerator[]
+     */
+    protected $parameters = [];
+
+    /**
+     * @var string
+     */
+    protected $body;
+
+    /**
+     * @var null|TypeGenerator
+     */
+    private $returnType;
+
+    /**
+     * @var bool
+     */
+    private $returnsReference = false;
+
+    /**
+     * @param  MethodReflection $reflectionMethod
      * @return MethodGenerator
      */
     public static function fromReflection(MethodReflection $reflectionMethod)
@@ -60,7 +82,7 @@ class MethodGenerator extends AbstractMemberGenerator
         $method         = new static();
         $declaringClass = $reflectionMethod->getDeclaringClass();
 
-        $method->returnType = TypeGenerator::fromReflectionType($reflectionMethod->getReturnType(), $declaringClass);
+        $method->setReturnType(self::extractReturnTypeFromMethodReflection($reflectionMethod));
         $method->setFinal($reflectionMethod->isFinal());
 
         if ($reflectionMethod->isPrivate()) {
@@ -88,6 +110,7 @@ class MethodGenerator extends AbstractMemberGenerator
      * from all lines
      *
      * @param string $body
+     *
      * @return string
      */
     protected static function clearBodyIndention($body)
@@ -123,6 +146,7 @@ class MethodGenerator extends AbstractMemberGenerator
      * @configkey final          bool
      * @configkey static         bool
      * @configkey visibility     string
+     *
      * @throws Exception\InvalidArgumentException
      * @param  array $array
      * @return MethodGenerator
@@ -177,11 +201,11 @@ class MethodGenerator extends AbstractMemberGenerator
     }
 
     /**
-     * @param  ?string                              $name
-     * @param ParameterGenerator[]|array[]|string[] $parameters
-     * @param int|int[]                             $flags
-     * @param  ?string                              $body
-     * @param DocBlockGenerator|string|null         $docBlock
+     * @param  string $name
+     * @param  array $parameters
+     * @param  int $flags
+     * @param  string $body
+     * @param  DocBlockGenerator|string $docBlock
      */
     public function __construct(
         $name = null,
@@ -208,7 +232,7 @@ class MethodGenerator extends AbstractMemberGenerator
     }
 
     /**
-     * @param  ParameterGenerator[]|array[]|string[] $parameters
+     * @param  array $parameters
      * @return MethodGenerator
      */
     public function setParameters(array $parameters)
@@ -216,8 +240,6 @@ class MethodGenerator extends AbstractMemberGenerator
         foreach ($parameters as $parameter) {
             $this->setParameter($parameter);
         }
-
-        $this->sortParameters();
 
         return $this;
     }
@@ -246,8 +268,6 @@ class MethodGenerator extends AbstractMemberGenerator
         }
 
         $this->parameters[$parameter->getName()] = $parameter;
-
-        $this->sortParameters();
 
         return $this;
     }
@@ -280,6 +300,7 @@ class MethodGenerator extends AbstractMemberGenerator
 
     /**
      * @param string|null $returnType
+     *
      * @return MethodGenerator
      */
     public function setReturnType($returnType = null)
@@ -301,6 +322,7 @@ class MethodGenerator extends AbstractMemberGenerator
 
     /**
      * @param bool $returnsReference
+     *
      * @return MethodGenerator
      */
     public function setReturnsReference($returnsReference)
@@ -308,16 +330,6 @@ class MethodGenerator extends AbstractMemberGenerator
         $this->returnsReference = (bool) $returnsReference;
 
         return $this;
-    }
-
-    /**
-     * Sort parameters by their position
-     */
-    private function sortParameters(): void
-    {
-        uasort($this->parameters, static function (ParameterGenerator $item1, ParameterGenerator $item2) {
-            return $item1->getPosition() <=> $item2->getPosition();
-        });
     }
 
     /**
@@ -383,9 +395,50 @@ class MethodGenerator extends AbstractMemberGenerator
         return $output;
     }
 
-    /** @return string */
     public function __toString()
     {
         return $this->generate();
+    }
+
+    /**
+     * @param MethodReflection $methodReflection
+     *
+     * @return null|string
+     */
+    private static function extractReturnTypeFromMethodReflection(MethodReflection $methodReflection)
+    {
+        $returnType = method_exists($methodReflection, 'getReturnType')
+            ? $methodReflection->getReturnType()
+            : null;
+
+        if (! $returnType) {
+            return null;
+        }
+
+        if (! method_exists($returnType, 'getName')) {
+            return self::expandLiteralType((string) $returnType, $methodReflection);
+        }
+
+        return ($returnType->allowsNull() ? '?' : '')
+            . self::expandLiteralType($returnType->getName(), $methodReflection);
+    }
+
+    /**
+     * @param string           $literalReturnType
+     * @param ReflectionMethod $methodReflection
+     *
+     * @return string
+     */
+    private static function expandLiteralType($literalReturnType, ReflectionMethod $methodReflection)
+    {
+        if ('self' === strtolower($literalReturnType)) {
+            return $methodReflection->getDeclaringClass()->getName();
+        }
+
+        if ('parent' === strtolower($literalReturnType)) {
+            return $methodReflection->getDeclaringClass()->getParentClass()->getName();
+        }
+
+        return $literalReturnType;
     }
 }
