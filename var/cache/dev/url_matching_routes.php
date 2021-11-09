@@ -16,6 +16,7 @@ return [
         '/api/login' => [[['_route' => 'api_login', '_controller' => 'App\\Controller\\ApiLoginController::index'], null, null, null, false, false, null]],
         '/article' => [[['_route' => 'create_article', '_controller' => 'App\\Controller\\ArticleController::createArticle'], null, null, null, false, false, null]],
         '/home' => [[['_route' => 'home', '_controller' => 'App\\Controller\\HomeController::index'], null, null, null, false, false, null]],
+        '/blog' => [[['_route' => 'blog', '_controller' => 'App\\Controller\\HomeController::blog'], null, null, null, false, false, null]],
         '/listesalles' => [[['_route' => 'liste_salles', '_controller' => 'App\\Controller\\ListeSallesController::index'], null, null, null, false, false, null]],
         '/lobby' => [[['_route' => 'lobby', '_controller' => 'App\\Controller\\LobbyController::index'], null, null, null, false, false, null]],
         '/hello' => [[['_route' => 'hello_world', '_controller' => 'App\\Controller\\MonController::hello'], null, null, null, false, false, null]],

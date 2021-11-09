@@ -14,36 +14,29 @@
     </head>
     <body style="background-color: #333333; margin-left:3em; margin-right:3em;";>
 
-{% block navbar %} <!--
-<nav class="navbar navbar-dark bg-dark navbar-expand-md bg-faded justify-content-center" style="margin-left: 5em; margin-right: 5em;">
-    <a href="/" class="navbar-brand d-flex w-50 mr-auto ">Logo</a>
+{% block navbar %} 
+<nav class="navbar navbar-dark bg-dark navbar-expand-md bg-faded justify-content-center" style="margin-left: 3em; margin-right: 3em">
+    <a href="/home" class="navbar-brand d-flex w-50 mr-auto ">Logo</a>
     <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
         <ul class="navbar-nav w-100 justify-content-center">
             <li class="nav-item active">
-                <a class="nav-link" href="/home">Accueil</a>
+                <a class="nav-link" href={{path('liste_salles')}}>ListeSalles</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="https://127.0.0.1:8000/listesalles">Blog</a>
+                <a class="nav-link" href={{path('blog')}}>Blog</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="//codeply.com">Statistiques</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">A propos</a>
+                <a class="nav-link" href={{path('profil')}}>Profil</a>
             </li>
         </ul>
         <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
             <li class="nav-item">
-                <a class="nav-link" href="#">Se connecter</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">S'inscrire</a>
+                <a class="nav-link" href={{ path('app_logout') }}>Se déconnecter</a>
             </li>
         </ul>           
     </div>
 </nav>
--->
-{% endblock %}
+{% endblock  %}
 
 {% block body %} {% endblock %}
 

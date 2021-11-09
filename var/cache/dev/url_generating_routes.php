@@ -17,6 +17,7 @@ return [
     'api_login' => [[], ['_controller' => 'App\\Controller\\ApiLoginController::index'], [], [['text', '/api/login']], [], []],
     'create_article' => [[], ['_controller' => 'App\\Controller\\ArticleController::createArticle'], [], [['text', '/article']], [], []],
     'home' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/home']], [], []],
+    'blog' => [[], ['_controller' => 'App\\Controller\\HomeController::blog'], [], [['text', '/blog']], [], []],
     'liste_salles' => [[], ['_controller' => 'App\\Controller\\ListeSallesController::index'], [], [['text', '/listesalles']], [], []],
     'lobby' => [[], ['_controller' => 'App\\Controller\\LobbyController::index'], [], [['text', '/lobby']], [], []],
     'hello_world' => [[], ['_controller' => 'App\\Controller\\MonController::hello'], [], [['text', '/hello']], [], []],
