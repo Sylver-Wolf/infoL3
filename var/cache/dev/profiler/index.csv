@@ -196,3 +196,9 @@ c537d0,127.0.0.1,GET,http://localhost:8000/templates/base.css.twig,1636473060,ce
 ce13eb,127.0.0.1,GET,http://localhost:8000/templates/base.css.twig,1636473060,,404
 9f6595,127.0.0.1,GET,http://localhost:8000/blog,1636473063,52f030,500
 52f030,127.0.0.1,GET,http://localhost:8000/blog,1636473063,,500
+a04dfc,127.0.0.1,GET,http://localhost:8000/,1636729319,772e9f,500
+772e9f,127.0.0.1,GET,http://localhost:8000/,1636729320,,500
+9c2c67,127.0.0.1,GET,http://localhost:8000/home,1636729320,,302
+c0b3e4,127.0.0.1,GET,http://localhost:8000/login,1636729321,,200
+5de922,127.0.0.1,GET,http://localhost:8000/templates/base.css.twig,1636729321,7e5484,404
+7e5484,127.0.0.1,GET,http://localhost:8000/templates/base.css.twig,1636729321,,404
