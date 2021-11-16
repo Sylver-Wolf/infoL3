@@ -71,13 +71,13 @@ class __TwigTemplate_d55a1309c8d63a9a79adf46d9ac6c95055038adffd3836d808bb1e4b53b
     <div class=\"navbar-collapse collapse w-100\" id=\"collapsingNavbar3\">
         <ul class=\"navbar-nav w-100 justify-content-center\">
             <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"https://127.0.0.1:8000/listesalles\">ListeSalles</a>
+                <a class=\"nav-link\" href=\"../salle\">ListeSalles</a>
             </li>
             <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"#\">Blog</a>
+                <a class=\"nav-link\" href=\"../article\">Article</a>
             </li>
             <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"#\">Mon Profil</a>
+                <a class=\"nav-link\" href=\"../profil\">Mon Profil</a>
             </li>
         </ul>
         <ul class=\"nav navbar-nav ml-auto w-100 justify-content-end\">
@@ -99,7 +99,7 @@ class __TwigTemplate_d55a1309c8d63a9a79adf46d9ac6c95055038adffd3836d808bb1e4b53b
 
     }
 
-    // line 28
+    // line 27
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -109,27 +109,37 @@ class __TwigTemplate_d55a1309c8d63a9a79adf46d9ac6c95055038adffd3836d808bb1e4b53b
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 29
+        // line 28
         echo "
 <div class=\"row mt-3 text-center\" style=\"background: #333333; margin-left: 3em; margin-right: 3em;\">
         <div class=\"col col-md-6\">
           <div class=\"col-md-12 container rounded-top\" style=\"background: #DDDDDD;rounded-top;\">
-            image article n
+            Pseudo :
           </div>
         </div>
         <div class=\"col col-md-6\">
           <div class=\"col-md-12 container rounded-top\" style=\"background: #DDDDDD; rounded-top;\">
-            image article n-1
+                <tr>
+                    <td>";
+        // line 38
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 38, $this->source); })()), "id", [], "any", false, false, false, 38), "html", null, true);
+        echo "</td>
+                </tr>
           </div>
         </div>
         <div class=\"col col-md-6\">
           <div class=\"col-md-12 container rounded-bottom\" style=\"background: #DDDDDD;\">
-            lien article n
+            Email :
           </div>
         </div>
         <div class=\"col col-md-6\">
           <div class=\"col-md-12 container rounded-bottom\" style=\"background: #DDDDDD;\">
-            lien article n-1
+                <tr>
+                    <td>";
+        // line 50
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 50, $this->source); })()), "username", [], "any", false, false, false, 50), "html", null, true);
+        echo "</td>
+                </tr>
           </div>
         </div>
 </div>
@@ -155,7 +165,7 @@ class __TwigTemplate_d55a1309c8d63a9a79adf46d9ac6c95055038adffd3836d808bb1e4b53b
 
     public function getDebugInfo()
     {
-        return array (  113 => 29,  103 => 28,  87 => 20,  59 => 3,  36 => 1,);
+        return array (  140 => 50,  125 => 38,  113 => 28,  103 => 27,  87 => 20,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -168,13 +178,13 @@ class __TwigTemplate_d55a1309c8d63a9a79adf46d9ac6c95055038adffd3836d808bb1e4b53b
     <div class=\"navbar-collapse collapse w-100\" id=\"collapsingNavbar3\">
         <ul class=\"navbar-nav w-100 justify-content-center\">
             <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"https://127.0.0.1:8000/listesalles\">ListeSalles</a>
+                <a class=\"nav-link\" href=\"../salle\">ListeSalles</a>
             </li>
             <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"#\">Blog</a>
+                <a class=\"nav-link\" href=\"../article\">Article</a>
             </li>
             <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"#\">Mon Profil</a>
+                <a class=\"nav-link\" href=\"../profil\">Mon Profil</a>
             </li>
         </ul>
         <ul class=\"nav navbar-nav ml-auto w-100 justify-content-end\">
@@ -186,28 +196,31 @@ class __TwigTemplate_d55a1309c8d63a9a79adf46d9ac6c95055038adffd3836d808bb1e4b53b
 </nav>
 {% endblock  %} 
 
-
 {% block body %}
 
 <div class=\"row mt-3 text-center\" style=\"background: #333333; margin-left: 3em; margin-right: 3em;\">
         <div class=\"col col-md-6\">
           <div class=\"col-md-12 container rounded-top\" style=\"background: #DDDDDD;rounded-top;\">
-            image article n
+            Pseudo :
           </div>
         </div>
         <div class=\"col col-md-6\">
           <div class=\"col-md-12 container rounded-top\" style=\"background: #DDDDDD; rounded-top;\">
-            image article n-1
+                <tr>
+                    <td>{{ user.id}}</td>
+                </tr>
           </div>
         </div>
         <div class=\"col col-md-6\">
           <div class=\"col-md-12 container rounded-bottom\" style=\"background: #DDDDDD;\">
-            lien article n
+            Email :
           </div>
         </div>
         <div class=\"col col-md-6\">
           <div class=\"col-md-12 container rounded-bottom\" style=\"background: #DDDDDD;\">
-            lien article n-1
+                <tr>
+                    <td>{{ user.username }}</td>
+                </tr>
           </div>
         </div>
 </div>

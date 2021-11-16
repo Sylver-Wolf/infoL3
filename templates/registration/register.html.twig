@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Inscription{% endblock %}
 
 {% block body %}
 <div style="background: #292929; margin-left: 35%; margin-right: 35%; padding-left:5%; padding-right:5%;">
@@ -10,9 +10,9 @@
     {{ form_start(registrationForm) }}
         <label style="color: #DDDDDD; padding-bottom: 2.5%;">{{ form_row(registrationForm.email) }}</label>
         <label style="color: #DDDDDD; padding-bottom: 2.5%; padding-top: 4%;">{{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
+            label: 'Password'  
         }) }}</label>
-        <label style="color: #DDDDDD; padding-bottom: 2.5%; padding-top: 4%;">{{ form_row(registrationForm.agreeTerms) }}</label>
+        <label style="color: #DDDDDD; padding-bottom: 2.5%; padding-top: 4%;" >{{ form_row(registrationForm.agreeTerms) }}</label>
 
         <button type="submit" class="btn btn-outline" style="border-color: #DDDDDD; color: #DDDDDD; margin-top: 10%; margin-bottom: 10%;">Register</button>
     {{ form_end(registrationForm) }}

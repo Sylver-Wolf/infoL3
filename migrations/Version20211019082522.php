@@ -17,6 +17,7 @@ final class Version20211019082522 extends AbstractMigration
         return '';
     }
 
+
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
@@ -28,4 +29,5 @@ final class Version20211019082522 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('DROP TABLE user');
     }
+
 }

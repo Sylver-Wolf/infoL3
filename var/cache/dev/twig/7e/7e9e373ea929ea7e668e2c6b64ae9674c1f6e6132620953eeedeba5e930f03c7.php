@@ -66,30 +66,10 @@ class __TwigTemplate_96d440acc7bd27119060da20636bf326aa6f422b2fa46529b447751da14
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "navbar"));
 
         echo " 
-<nav class=\"navbar navbar-dark bg-dark navbar-expand-md bg-faded justify-content-center\" style=\"margin-left: 3em; margin-right: 3em\">
-    <a href=\"/home\" class=\"navbar-brand d-flex w-50 mr-auto \">Logo</a>
-    <div class=\"navbar-collapse collapse w-100\" id=\"collapsingNavbar3\">
-        <ul class=\"navbar-nav w-100 justify-content-center\">
-            <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"https://127.0.0.1:8000/listesalles\">ListeSalles</a>
-            </li>
-            <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"#\">Blog</a>
-            </li>
-            <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"https://127.0.0.1:8000/profil\">Mon Profil</a>
-            </li>
-        </ul>
-        <ul class=\"nav navbar-nav ml-auto w-100 justify-content-end\">
-            <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"";
-        // line 20
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
-        echo "\">Se déconnecter</a>
-            </li>
-        </ul>           
-    </div>
-</nav>
+    ";
+        // line 4
+        $this->displayParentBlock("navbar", $context, $blocks);
+        echo "
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -99,7 +79,7 @@ class __TwigTemplate_96d440acc7bd27119060da20636bf326aa6f422b2fa46529b447751da14
 
     }
 
-    // line 28
+    // line 8
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -109,7 +89,7 @@ class __TwigTemplate_96d440acc7bd27119060da20636bf326aa6f422b2fa46529b447751da14
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 29
+        // line 9
         echo "
 <main role=\"main\">
 
@@ -117,7 +97,8 @@ class __TwigTemplate_96d440acc7bd27119060da20636bf326aa6f422b2fa46529b447751da14
     </main>
 
 <div class=\"text-center\">
-  <a href=\"https://127.0.0.1:8000/listesalles\"><button type=\"button\" class=\"btn btn-outline col-md-2 \" style=\"border-color: #DDDDDD; color: #DDDDDD;margin-top: 2em ;margin-bottom: 2em\"> Jouer</button>
+  <a href=\"../salle\"><button type=\"button\" class=\"btn btn-outline col-md-2 \" style=\"border-color: #DDDDDD; color: #DDDDDD;margin-top: 2em ;margin-bottom: 2em\"> Jouer</button>
+  </a>
 </div>
 
 
@@ -153,7 +134,6 @@ class __TwigTemplate_96d440acc7bd27119060da20636bf326aa6f422b2fa46529b447751da14
           </div>
         </div>
 </div>
-
 
 
 
@@ -178,7 +158,7 @@ class __TwigTemplate_96d440acc7bd27119060da20636bf326aa6f422b2fa46529b447751da14
 
     public function getDebugInfo()
     {
-        return array (  113 => 29,  103 => 28,  87 => 20,  59 => 3,  36 => 1,);
+        return array (  93 => 9,  83 => 8,  71 => 4,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -186,27 +166,7 @@ class __TwigTemplate_96d440acc7bd27119060da20636bf326aa6f422b2fa46529b447751da14
         return new Source("{% extends 'base.html.twig' %}
 
 {% block navbar %} 
-<nav class=\"navbar navbar-dark bg-dark navbar-expand-md bg-faded justify-content-center\" style=\"margin-left: 3em; margin-right: 3em\">
-    <a href=\"/home\" class=\"navbar-brand d-flex w-50 mr-auto \">Logo</a>
-    <div class=\"navbar-collapse collapse w-100\" id=\"collapsingNavbar3\">
-        <ul class=\"navbar-nav w-100 justify-content-center\">
-            <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"https://127.0.0.1:8000/listesalles\">ListeSalles</a>
-            </li>
-            <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"#\">Blog</a>
-            </li>
-            <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"https://127.0.0.1:8000/profil\">Mon Profil</a>
-            </li>
-        </ul>
-        <ul class=\"nav navbar-nav ml-auto w-100 justify-content-end\">
-            <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"{{ path('app_logout') }}\">Se déconnecter</a>
-            </li>
-        </ul>           
-    </div>
-</nav>
+    {{ parent() }}
 {% endblock  %} 
 
 
@@ -218,7 +178,8 @@ class __TwigTemplate_96d440acc7bd27119060da20636bf326aa6f422b2fa46529b447751da14
     </main>
 
 <div class=\"text-center\">
-  <a href=\"https://127.0.0.1:8000/listesalles\"><button type=\"button\" class=\"btn btn-outline col-md-2 \" style=\"border-color: #DDDDDD; color: #DDDDDD;margin-top: 2em ;margin-bottom: 2em\"> Jouer</button>
+  <a href=\"../salle\"><button type=\"button\" class=\"btn btn-outline col-md-2 \" style=\"border-color: #DDDDDD; color: #DDDDDD;margin-top: 2em ;margin-bottom: 2em\"> Jouer</button>
+  </a>
 </div>
 
 
@@ -254,7 +215,6 @@ class __TwigTemplate_96d440acc7bd27119060da20636bf326aa6f422b2fa46529b447751da14
           </div>
         </div>
 </div>
-
 
 
 

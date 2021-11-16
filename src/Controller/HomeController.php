@@ -15,27 +15,19 @@ class HomeController extends AbstractController
     public function index(): Response
     {
         return $this->render('home/index.html.twig');
-        
-    }
+    }/* 
+
     /**
-     * @Route("/liste_salles", name="liste_salles")
+     * @Route("/", name="home")
+     * @param ArticleRepository $articleRepository
+     * @return Reponse
      */
-    public function liste_salles(): Response
+    
+    /*public function home(ArticleRepository $articleRepository)
     {
-        return $this->render('liste_salles/index.html.twig');
+        return $this->render('home/index.html.twig',[
+            "articles" => $articleRepository->findBy(["published" => 1])
+        ]);
     }
-    /**
-     * @Route("/blog", name="blog")
-     */
-    public function blog(): Response
-    {
-        return $this->render('blog/index.html.twig');
-    }
-    /**
-     * @Route("/profil", name="profil")
-     */
-    public function profil(): Response
-    {
-        return $this->render('profil/index.html.twig');
-    }
+    */
 }

@@ -73,19 +73,39 @@ class __TwigTemplate_cd0c0127a62f7d73b5b5a84b25cf25a75deaf39cfc9f399e32f85fd58c1
         // line 12
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/bootstrap.bundle.min.js"), "html", null, true);
         echo "\"></script>
+        <script src=\"";
+        // line 13
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/bootstrap.bundle.js"), "html", null, true);
+        echo "\"></script>
+        <script src=\"";
+        // line 14
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/bootstrap.min.js"), "html", null, true);
+        echo "\"></script>
+<script src=\"https://unpkg.com/@popperjs/core@2\"></script>
+<script>
+  const button = document.querySelector('#button');
+  const tooltip = document.querySelector('#tooltip');
+
+  // Pass the button, the tooltip, and some options, and Popper will do the
+  // magic positioning for you:
+  Popper.createPopper(button, tooltip, {
+    placement: 'right',
+  });
+</script>
+
 
     </head>
     <body style=\"background-color: #333333; margin-left:3em; margin-right:3em;\";>
 
 ";
-        // line 17
+        // line 31
         $this->displayBlock('navbar', $context, $blocks);
-        // line 47
+        // line 75
         echo "
 ";
-        // line 48
+        // line 76
         $this->displayBlock('body', $context, $blocks);
-        // line 49
+        // line 77
         echo "
 
 
@@ -138,7 +158,7 @@ class __TwigTemplate_cd0c0127a62f7d73b5b5a84b25cf25a75deaf39cfc9f399e32f85fd58c1
 
     }
 
-    // line 17
+    // line 31
     public function block_navbar($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -148,35 +168,66 @@ class __TwigTemplate_cd0c0127a62f7d73b5b5a84b25cf25a75deaf39cfc9f399e32f85fd58c1
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "navbar"));
 
-        echo " <!--
-<nav class=\"navbar navbar-dark bg-dark navbar-expand-md bg-faded justify-content-center\" style=\"margin-left: 5em; margin-right: 5em;\">
-    <a href=\"/\" class=\"navbar-brand d-flex w-50 mr-auto \">Logo</a>
+        // line 32
+        echo "<style>
+nav{
+    margin-left: 3%; 
+    margin-right: 3%;
+}
+
+</style>
+
+<nav class=\"navbar navbar-dark bg-dark navbar-expand-md bg-faded justify-content-center\" style=\"margin-left: 3em; margin-right: 3em\">
+    <a href=\"/home\" class=\"navbar-brand d-flex w-50 mr-auto \">Logo</a>
     <div class=\"navbar-collapse collapse w-100\" id=\"collapsingNavbar3\">
         <ul class=\"navbar-nav w-100 justify-content-center\">
             <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"/home\">Accueil</a>
+                <a class=\"nav-link\" href=\"../salle\">ListeSalles</a>
             </li>
             <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"https://127.0.0.1:8000/listesalles\">Blog</a>
+                <a class=\"nav-link\" href=\"../article\">Article</a>
             </li>
-            <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"//codeply.com\">Statistiques</a>
+            ";
+        // line 50
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_USER")) {
+            // line 51
+            echo "            <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"../profil\">Mon Profil</a>
             </li>
-            <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"#\">A propos</a>
-            </li>
-        </ul>
+            ";
+        }
+        // line 55
+        echo "        </ul>
         <ul class=\"nav navbar-nav ml-auto w-100 justify-content-end\">
-            <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"#\">Se connecter</a>
+            ";
+        // line 57
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_USER")) {
+            // line 58
+            echo "            <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"";
+            // line 59
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
+            echo "\">Se déconnecter</a>
+            </li>
+            ";
+        }
+        // line 62
+        echo "            ";
+        if ( !$this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_USER")) {
+            // line 63
+            echo "            <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"../login\">Se connecter</a>
             </li>
             <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"#\">S'inscrire</a>
+                <a class=\"nav-link\" href=\"../register\">S'inscrire</a>
             </li>
-        </ul>           
+            ";
+        }
+        // line 70
+        echo "        </ul>           
     </div>
 </nav>
--->
+
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -186,7 +237,7 @@ class __TwigTemplate_cd0c0127a62f7d73b5b5a84b25cf25a75deaf39cfc9f399e32f85fd58c1
 
     }
 
-    // line 48
+    // line 76
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -217,7 +268,7 @@ class __TwigTemplate_cd0c0127a62f7d73b5b5a84b25cf25a75deaf39cfc9f399e32f85fd58c1
 
     public function getDebugInfo()
     {
-        return array (  190 => 48,  142 => 17,  124 => 8,  105 => 5,  89 => 49,  87 => 48,  84 => 47,  82 => 17,  74 => 12,  70 => 11,  66 => 10,  61 => 9,  59 => 8,  53 => 5,  47 => 1,);
+        return array (  241 => 76,  227 => 70,  218 => 63,  215 => 62,  209 => 59,  206 => 58,  204 => 57,  200 => 55,  194 => 51,  192 => 50,  172 => 32,  162 => 31,  144 => 8,  125 => 5,  109 => 77,  107 => 76,  104 => 75,  102 => 31,  82 => 14,  78 => 13,  74 => 12,  70 => 11,  66 => 10,  61 => 9,  59 => 8,  53 => 5,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -234,39 +285,67 @@ class __TwigTemplate_cd0c0127a62f7d73b5b5a84b25cf25a75deaf39cfc9f399e32f85fd58c1
         <link rel=\"stylesheet\" href=\"{{asset('css/bootstrap.rtl.min.css')}}\">
         <link href=\"{{asset('templates/base.css.twig') }}\" type=\"text/css\" rel=\"stylesheet\" />
         <script src=\"{{asset('js/bootstrap.bundle.min.js')}}\"></script>
+        <script src=\"{{asset('js/bootstrap.bundle.js')}}\"></script>
+        <script src=\"{{asset('js/bootstrap.min.js')}}\"></script>
+<script src=\"https://unpkg.com/@popperjs/core@2\"></script>
+<script>
+  const button = document.querySelector('#button');
+  const tooltip = document.querySelector('#tooltip');
+
+  // Pass the button, the tooltip, and some options, and Popper will do the
+  // magic positioning for you:
+  Popper.createPopper(button, tooltip, {
+    placement: 'right',
+  });
+</script>
+
 
     </head>
     <body style=\"background-color: #333333; margin-left:3em; margin-right:3em;\";>
 
-{% block navbar %} <!--
-<nav class=\"navbar navbar-dark bg-dark navbar-expand-md bg-faded justify-content-center\" style=\"margin-left: 5em; margin-right: 5em;\">
-    <a href=\"/\" class=\"navbar-brand d-flex w-50 mr-auto \">Logo</a>
+{% block navbar %}
+<style>
+nav{
+    margin-left: 3%; 
+    margin-right: 3%;
+}
+
+</style>
+
+<nav class=\"navbar navbar-dark bg-dark navbar-expand-md bg-faded justify-content-center\" style=\"margin-left: 3em; margin-right: 3em\">
+    <a href=\"/home\" class=\"navbar-brand d-flex w-50 mr-auto \">Logo</a>
     <div class=\"navbar-collapse collapse w-100\" id=\"collapsingNavbar3\">
         <ul class=\"navbar-nav w-100 justify-content-center\">
             <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"/home\">Accueil</a>
+                <a class=\"nav-link\" href=\"../salle\">ListeSalles</a>
             </li>
             <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"https://127.0.0.1:8000/listesalles\">Blog</a>
+                <a class=\"nav-link\" href=\"../article\">Article</a>
             </li>
+            {% if is_granted('ROLE_USER') %}
             <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"//codeply.com\">Statistiques</a>
+                <a class=\"nav-link\" href=\"../profil\">Mon Profil</a>
             </li>
-            <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"#\">A propos</a>
-            </li>
+            {% endif %}
         </ul>
         <ul class=\"nav navbar-nav ml-auto w-100 justify-content-end\">
+            {% if is_granted('ROLE_USER') %}
             <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"#\">Se connecter</a>
+                <a class=\"nav-link\" href=\"{{ path('app_logout') }}\">Se déconnecter</a>
+            </li>
+            {% endif %}
+            {% if not is_granted('ROLE_USER') %}
+            <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"../login\">Se connecter</a>
             </li>
             <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"#\">S'inscrire</a>
+                <a class=\"nav-link\" href=\"../register\">S'inscrire</a>
             </li>
+            {% endif %}
         </ul>           
     </div>
 </nav>
--->
+
 {% endblock %}
 
 {% block body %} {% endblock %}

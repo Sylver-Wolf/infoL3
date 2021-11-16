@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quizz : Listes des salles{% endblock %}
+
+{% block navbar %}
+    {{ parent() }}
+{% endblock  %} 
+
+{% block body %}
+<style>
+div{
+    text-align:center;
+}
+
+#back{
+background-color: #AAAAAA;
+margin-left: 3%;
+margin-right: 3%;
+}
+
+#creer{
+background-color: #DDDDDD;
+margin-left: 3%;
+margin-right: 3%;
+}
+</style>
+
+<div class="container  rounded"  id="back">
+  <div class="row" style="margin-bottom: 0.5%; padding-bottom: 0.5%; padding-top: 0.5%;">
+    <div class="col">
+    Selectioner un thème    
+  </div>
+    <div class="col">
+    Selectioner une difficulté    
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

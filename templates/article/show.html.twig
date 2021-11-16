@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{ article.title }}
+{% endblock %}
+
+{% block body %}
+<nav class="navbar navbar-dark bg-dark navbar-expand-md bg-faded justify-content-center" style="margin-left: 3em; margin-right: 3em">
+    <a href="/home" class="navbar-brand d-flex w-50 mr-auto ">Logo</a>
+    <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
+        <ul class="navbar-nav w-100 justify-content-center">
+            <li class="nav-item active">
+                <a class="nav-link" href="../salle">ListeSalles</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="../article">Article</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../profil">Mon Profil</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
+            </li>
+        </ul>           
+    </div>
+</nav>
+    <div class="container">
+        <h1>{{ article.title }}</h1>
+        <p>
+            {{ article.description }}
+        </p>
+        
+        <img src={{article.image}} />
+        <small class="text-muted">Date de publication : {{ article.createdAt|date("d/m/Y") }}</small>
+    </div>
+
+
+{% endblock %}
+
+

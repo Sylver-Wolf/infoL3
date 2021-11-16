@@ -1,4 +1,10 @@
 {% extends 'base.html.twig' %}
+
+{% block navbar %} 
+    {{ parent() }}
+{% endblock  %} 
+
+
 {% block body %}
 
 <main role="main">
@@ -7,7 +13,8 @@
     </main>
 
 <div class="text-center">
-  <a href={{path('liste_salles')}}><button type="button" class="btn btn-outline col-md-2 " style="border-color: #DDDDDD; color: #DDDDDD;margin-top: 2em ;margin-bottom: 2em"> Jouer</button>
+  <a href="../salle"><button type="button" class="btn btn-outline col-md-2 " style="border-color: #DDDDDD; color: #DDDDDD;margin-top: 2em ;margin-bottom: 2em"> Jouer</button>
+  </a>
 </div>
 
 
@@ -43,7 +50,6 @@
           </div>
         </div>
 </div>
-
 
 
 

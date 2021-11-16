@@ -1,11 +1,56 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ArticleController!{% endblock %}
+{% block title %}Article{% endblock %}
 
+{% block navbar %} 
+    {{ parent() }}
+
+{% endblock  %} 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+h1{
+    padding: 3%;
+    font-size: 1.35em;
+}
+
+img{
+    padding: 2%;
+object-position: center;
+    height:256px;
+    width:400px;
+}
+
 </style>
+<main role="main">
+</main>
+<div class="row mt-3 text-center" style="background: #333333;">          
+        {% for article in articles %}
+        <div class="col col-md-4" >
+          <div class="col-md-12 container rounded" style="margin-bottom: 3%; margin-top: 3%;background: #DDDDDD;">
+            <a href="{{ path('article_show', {"id": article.id}) }}">
+                <h1>{{ article.title }} </h1>
+            </a>
+            <img src={{article.image}}/>
+            <div class="btn-group"style="margin: 2%;">
+            {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('article_edit', {"id": article.id}) }}" class="btn btn-outline-secondary">Editer</a>
+            <a href="{{ path('article_delete', {"id": article.id}) }}" class="btn btn-outline-secondary" onclick="return confirm('Voulez-vous supprimer cet article ?')">Supprimer</a>
+            {% endif %}
+          </div>
+          </div>
+        </div>           
+        {% endfor %}
+        {% if is_granted('ROLE_ADMIN') %}
+        <div class="col col-md-4" >
+          <div class="col-md-12 container rounded" style="margin-bottom: 3%; margin-top: 3%;background: #DDDDDD;">
+            </a>
+            <div class="btn-group"style="margin: 2%;">
+            <a href="{{ path('article_new') }}" class="btn btn-outline-primary">Ajouter un article</a>
+          </div>
+        </div> 
+        {% endif %}
+</div>
 
 {% endblock %}
+
+

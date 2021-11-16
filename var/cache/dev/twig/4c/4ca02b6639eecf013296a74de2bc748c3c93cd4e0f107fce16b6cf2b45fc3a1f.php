@@ -71,21 +71,15 @@ class __TwigTemplate_23a2f9e3c72ef0c247748445be83da98608c96f6d51ab21b80d3da19eb5
     <div class=\"navbar-collapse collapse w-100\" id=\"collapsingNavbar3\">
         <ul class=\"navbar-nav w-100 justify-content-center\">
             <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"https://127.0.0.1:8000/listesalles\">ListeSalles</a>
-            </li>
-            <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"#\">Blog</a>
-            </li>
-            <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"#\">Mon Profil</a>
+                <a class=\"nav-link\" href=\"../article\">Article</a>
             </li>
         </ul>
         <ul class=\"nav navbar-nav ml-auto w-100 justify-content-end\">
             <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"https://127.0.0.1:8000/login\">Se connecter</a>
+                <a class=\"nav-link\" href=\"../login\">Se connecter</a>
             </li>
             <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"https://127.0.0.1:8000/register\">S'inscrire</a>
+                <a class=\"nav-link\" href=\"../register\">S'inscrire</a>
             </li>
         </ul>           
     </div>
@@ -99,7 +93,7 @@ class __TwigTemplate_23a2f9e3c72ef0c247748445be83da98608c96f6d51ab21b80d3da19eb5
 
     }
 
-    // line 31
+    // line 25
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -109,9 +103,9 @@ class __TwigTemplate_23a2f9e3c72ef0c247748445be83da98608c96f6d51ab21b80d3da19eb5
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 32
+        // line 26
         echo "<div class=\"text-center\">
-  <a href=\"https://127.0.0.1:8000/login\"><button type=\"button\" class=\"btn btn-outline col-md-2 \" style=\"border-color: #DDDDDD; color: #DDDDDD;margin-top: 2em ;margin-bottom: 2em\">Se connecter pour Jouer</button>
+  <a href=\"../login\"><button type=\"button\" class=\"btn btn-outline col-md-2 \" style=\"border-color: #DDDDDD; color: #DDDDDD;margin-top: 2em ;margin-bottom: 2em\">Se connecter pour Jouer</button>
 </div>
 
 
@@ -172,7 +166,7 @@ class __TwigTemplate_23a2f9e3c72ef0c247748445be83da98608c96f6d51ab21b80d3da19eb5
 
     public function getDebugInfo()
     {
-        return array (  113 => 32,  103 => 31,  59 => 3,  36 => 1,);
+        return array (  107 => 26,  97 => 25,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -185,21 +179,15 @@ class __TwigTemplate_23a2f9e3c72ef0c247748445be83da98608c96f6d51ab21b80d3da19eb5
     <div class=\"navbar-collapse collapse w-100\" id=\"collapsingNavbar3\">
         <ul class=\"navbar-nav w-100 justify-content-center\">
             <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"https://127.0.0.1:8000/listesalles\">ListeSalles</a>
-            </li>
-            <li class=\"nav-item active\">
-                <a class=\"nav-link\" href=\"#\">Blog</a>
-            </li>
-            <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"#\">Mon Profil</a>
+                <a class=\"nav-link\" href=\"../article\">Article</a>
             </li>
         </ul>
         <ul class=\"nav navbar-nav ml-auto w-100 justify-content-end\">
             <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"https://127.0.0.1:8000/login\">Se connecter</a>
+                <a class=\"nav-link\" href=\"../login\">Se connecter</a>
             </li>
             <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"https://127.0.0.1:8000/register\">S'inscrire</a>
+                <a class=\"nav-link\" href=\"../register\">S'inscrire</a>
             </li>
         </ul>           
     </div>
@@ -209,7 +197,7 @@ class __TwigTemplate_23a2f9e3c72ef0c247748445be83da98608c96f6d51ab21b80d3da19eb5
 
 {% block body %}
 <div class=\"text-center\">
-  <a href=\"https://127.0.0.1:8000/login\"><button type=\"button\" class=\"btn btn-outline col-md-2 \" style=\"border-color: #DDDDDD; color: #DDDDDD;margin-top: 2em ;margin-bottom: 2em\">Se connecter pour Jouer</button>
+  <a href=\"../login\"><button type=\"button\" class=\"btn btn-outline col-md-2 \" style=\"border-color: #DDDDDD; color: #DDDDDD;margin-top: 2em ;margin-bottom: 2em\">Se connecter pour Jouer</button>
 </div>
 
 

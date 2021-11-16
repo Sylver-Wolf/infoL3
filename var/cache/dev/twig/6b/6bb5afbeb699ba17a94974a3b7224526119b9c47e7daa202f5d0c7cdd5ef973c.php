@@ -65,7 +65,7 @@ class __TwigTemplate_5b7961d458540f30797ebfa9ae5c2f01ef6f6420e8cc0744673783acff1
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        echo "Register";
+        echo "Inscription";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -102,7 +102,7 @@ class __TwigTemplate_5b7961d458540f30797ebfa9ae5c2f01ef6f6420e8cc0744673783acff1
         echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 12, $this->source); })()), "plainPassword", [], "any", false, false, false, 12), 'row', ["label" => "Password"]);
         // line 14
         echo "</label>
-        <label style=\"color: #DDDDDD; padding-bottom: 2.5%; padding-top: 4%;\">";
+        <label style=\"color: #DDDDDD; padding-bottom: 2.5%; padding-top: 4%;\" >";
         // line 15
         echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 15, $this->source); })()), "agreeTerms", [], "any", false, false, false, 15), 'row');
         echo "</label>
@@ -143,7 +143,7 @@ class __TwigTemplate_5b7961d458540f30797ebfa9ae5c2f01ef6f6420e8cc0744673783acff1
     {
         return new Source("{% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Inscription{% endblock %}
 
 {% block body %}
 <div style=\"background: #292929; margin-left: 35%; margin-right: 35%; padding-left:5%; padding-right:5%;\">
@@ -153,9 +153,9 @@ class __TwigTemplate_5b7961d458540f30797ebfa9ae5c2f01ef6f6420e8cc0744673783acff1
     {{ form_start(registrationForm) }}
         <label style=\"color: #DDDDDD; padding-bottom: 2.5%;\">{{ form_row(registrationForm.email) }}</label>
         <label style=\"color: #DDDDDD; padding-bottom: 2.5%; padding-top: 4%;\">{{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
+            label: 'Password'  
         }) }}</label>
-        <label style=\"color: #DDDDDD; padding-bottom: 2.5%; padding-top: 4%;\">{{ form_row(registrationForm.agreeTerms) }}</label>
+        <label style=\"color: #DDDDDD; padding-bottom: 2.5%; padding-top: 4%;\" >{{ form_row(registrationForm.agreeTerms) }}</label>
 
         <button type=\"submit\" class=\"btn btn-outline\" style=\"border-color: #DDDDDD; color: #DDDDDD; margin-top: 10%; margin-bottom: 10%;\">Register</button>
     {{ form_end(registrationForm) }}

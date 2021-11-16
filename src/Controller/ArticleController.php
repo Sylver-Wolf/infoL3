@@ -2,33 +2,110 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
+use App\Form\ArticleType;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Class ArticleController
+ * @package App\Controller
+ * @Route("/", name="")
+ */
 class ArticleController extends AbstractController
 {
     /**
-     * @Route("/article", name="create_article")
+     * @Route("/{id}/show", name="article_show")
+     * @param Article $article
+     * @return Response
      */
-    public function createArticle(): Response
+    public function show(Article $article): Response
     {
-        // you can fetch the EntityManager via $this->getDoctrine()
-        // or you can add an argument to the action: createArticle(EntityManagerInterface $entityManager)
-        $entityManager = $this->getDoctrine()->getManager();
+        return $this->render("article/show.html.twig", [
+            "article" => $article
+        ]);
+    }
 
+
+    /**
+     * @Route("/article/new", name="article_new")
+     * @param Request $request
+     * @return Response
+     */
+    public function new(Request $request): Response
+    {
         $article = new Article();
-        $article->setPublished(true);
-        $article->setTitle('Macron démission...');
-        $article->setDescription('Macron doit démissioner car il s agit d un président de me...');
-        $article->setImage('https://file1.closermag.fr/var/closermag/storage/images/media/images-des-contenus/article/170514-le-selfie/le-selfie-d-emmanuel-macron-detourne/5675916-1-fre-FR/Le-selfie-d-Emmanuel-Macron-detourne.png?alias=exact1024x768_l&size=x100&format=webp');
-        // tell Doctrine you want to (eventually) save the Product (no queries yet)
-        $entityManager->persist($article);
+        $form = $this->createForm(ArticleType::class, $article);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
 
-        // actually executes the queries (i.e. the INSERT query)
-        $entityManager->flush();
+            $em->persist($article);
+            $em->flush();
 
-        return new Response('Saved new article with id '.$article->getId());
+            return $this->redirectToRoute('article');
+
+        }
+        return $this->render('article/new.html.twig', [
+            "form" => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("article/{id}/edit", name="article_edit")
+     * @param Article $article
+     * @param Request $request
+     * @return Response
+     */
+    public function edit(Article $article, Request $request): Response
+    {
+        $form = $this->createForm(ArticleType::class, $article);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            return $this->redirectToRoute('article');
+        }
+        return $this->render("article/edit.html.twig", [
+            "form" => $form->createView()
+        ]);
+    }
+
+
+    /**
+     * @Route("/article", name="article")
+     */
+    public function index(): Response
+    {
+        // Méthode findBy qui permet de récupérer les données avec des critères de filtre et de tri
+        $article = $this->getDoctrine()->getRepository(Article::class);
+        $article = $article->findAll();
+
+        return $this->render('article/index.html.twig', [
+            'articles' => $article,
+        ]);
+
+        return $this->render('article/index.html.twig', [
+            'controller_name' => 'ArticlesController',
+        ]);
+    }
+
+    /**
+     * @Route("/article/{id}/delete", name="article_delete")
+     * @param Article $article
+     * @return RedirectResponse
+     */
+    public function delete(Article $article): RedirectResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($article);
+        $em->flush();
+
+        return $this->redirectToRoute("article");
     }
 }
 

@@ -28,20 +28,19 @@ class Article
     private $description;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    private $published;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
-    private $image;
+    private $Image;
 
     /**
      * @ORM\Column(type="datetime_immutable")
      */
     private $createdAt;
 
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
     public function getId(): ?int
     {
         return $this->id;
@@ -71,26 +70,14 @@ class Article
         return $this;
     }
 
-    public function getPublished(): ?bool
-    {
-        return $this->published;
-    }
-
-    public function setPublished(bool $published): self
-    {
-        $this->published = $published;
-
-        return $this;
-    }
-
     public function getImage(): ?string
     {
-        return $this->image;
+        return $this->Image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(string $Image): self
     {
-        $this->image = $image;
+        $this->Image = $Image;
 
         return $this;
     }
