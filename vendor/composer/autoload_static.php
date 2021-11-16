@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit855f7f6259c45cbd0ca1f03c52f5f45d
+class ComposerStaticInit2d7333c718a9a29948c87926731f6df4
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -23,6 +23,7 @@ class ComposerStaticInit855f7f6259c45cbd0ca1f03c52f5f45d
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
+        '7e9bd612cc444b3eed788ebbe46263a0' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/autoload.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -41,6 +42,7 @@ class ComposerStaticInit855f7f6259c45cbd0ca1f03c52f5f45d
         ),
         'S' => 
         array (
+            'Symfony\\WebpackEncoreBundle\\' => 28,
             'Symfony\\Runtime\\Symfony\\Component\\' => 34,
             'Symfony\\Polyfill\\Php81\\' => 23,
             'Symfony\\Polyfill\\Php80\\' => 23,
@@ -110,6 +112,7 @@ class ComposerStaticInit855f7f6259c45cbd0ca1f03c52f5f45d
             'Symfony\\Bridge\\PhpUnit\\' => 23,
             'Symfony\\Bridge\\Monolog\\' => 23,
             'Symfony\\Bridge\\Doctrine\\' => 24,
+            'SymfonyCasts\\Bundle\\VerifyEmail\\' => 32,
             'Sensio\\Bundle\\FrameworkExtraBundle\\' => 35,
         ),
         'P' => 
@@ -130,6 +133,8 @@ class ComposerStaticInit855f7f6259c45cbd0ca1f03c52f5f45d
         ),
         'L' => 
         array (
+            'Laminas\\ZendFrameworkBridge\\' => 28,
+            'Laminas\\EventManager\\' => 21,
             'Laminas\\Code\\' => 13,
         ),
         'E' => 
@@ -180,6 +185,10 @@ class ComposerStaticInit855f7f6259c45cbd0ca1f03c52f5f45d
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
+        ),
+        'Symfony\\WebpackEncoreBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/webpack-encore-bundle/src',
         ),
         'Symfony\\Runtime\\Symfony\\Component\\' => 
         array (
@@ -457,6 +466,10 @@ class ComposerStaticInit855f7f6259c45cbd0ca1f03c52f5f45d
         array (
             0 => __DIR__ . '/..' . '/symfony/doctrine-bridge',
         ),
+        'SymfonyCasts\\Bundle\\VerifyEmail\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfonycasts/verify-email-bundle/src',
+        ),
         'Sensio\\Bundle\\FrameworkExtraBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/sensio/framework-extra-bundle/src',
@@ -500,6 +513,14 @@ class ComposerStaticInit855f7f6259c45cbd0ca1f03c52f5f45d
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'Laminas\\ZendFrameworkBridge\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src',
+        ),
+        'Laminas\\EventManager\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src',
         ),
         'Laminas\\Code\\' => 
         array (
@@ -586,7 +607,27 @@ class ComposerStaticInit855f7f6259c45cbd0ca1f03c52f5f45d
     );
 
     public static $classMap = array (
+        'App\\Controller\\ApiLoginController' => __DIR__ . '/../..' . '/src/Controller/ApiLoginController.php',
+        'App\\Controller\\ArticleController' => __DIR__ . '/../..' . '/src/Controller/ArticleController.php',
+        'App\\Controller\\HomeController' => __DIR__ . '/../..' . '/src/Controller/HomeController.php',
+        'App\\Controller\\ListeSallesController' => __DIR__ . '/../..' . '/src/Controller/ListeSallesController.php',
+        'App\\Controller\\LobbyController' => __DIR__ . '/../..' . '/src/Controller/LobbyController.php',
+        'App\\Controller\\MonController' => __DIR__ . '/../..' . '/src/Controller/MonController.php',
+        'App\\Controller\\RegistrationController' => __DIR__ . '/../..' . '/src/Controller/RegistrationController.php',
+        'App\\Controller\\SecurityController' => __DIR__ . '/../..' . '/src/Controller/SecurityController.php',
+        'App\\Controller\\VisiteurController' => __DIR__ . '/../..' . '/src/Controller/VisiteurController.php',
+        'App\\Entity\\Article' => __DIR__ . '/../..' . '/src/Entity/Article.php',
+        'App\\Entity\\Joueur' => __DIR__ . '/../..' . '/src/Entity/Joueur.php',
+        'App\\Entity\\Product' => __DIR__ . '/../..' . '/src/Entity/Product.php',
+        'App\\Entity\\User' => __DIR__ . '/../..' . '/src/Entity/User.php',
+        'App\\Form\\RegistrationFormType' => __DIR__ . '/../..' . '/src/Form/RegistrationFormType.php',
         'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
+        'App\\Repository\\ArticleRepository' => __DIR__ . '/../..' . '/src/Repository/ArticleRepository.php',
+        'App\\Repository\\JoueurRepository' => __DIR__ . '/../..' . '/src/Repository/JoueurRepository.php',
+        'App\\Repository\\ProductRepository' => __DIR__ . '/../..' . '/src/Repository/ProductRepository.php',
+        'App\\Repository\\UserRepository' => __DIR__ . '/../..' . '/src/Repository/UserRepository.php',
+        'App\\Security\\EmailVerifier' => __DIR__ . '/../..' . '/src/Security/EmailVerifier.php',
+        'App\\Security\\LoginAuthenticator' => __DIR__ . '/../..' . '/src/Security/LoginAuthenticator.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Collator' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/Resources/stubs/Collator.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
@@ -1779,6 +1820,12 @@ class ComposerStaticInit855f7f6259c45cbd0ca1f03c52f5f45d
         'Egulias\\EmailValidator\\Warning\\Warning' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/Warning.php',
         'IntlDateFormatter' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/Resources/stubs/IntlDateFormatter.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
+        'Laminas\\Code\\Annotation\\AnnotationCollection' => __DIR__ . '/..' . '/laminas/laminas-code/src/Annotation/AnnotationCollection.php',
+        'Laminas\\Code\\Annotation\\AnnotationInterface' => __DIR__ . '/..' . '/laminas/laminas-code/src/Annotation/AnnotationInterface.php',
+        'Laminas\\Code\\Annotation\\AnnotationManager' => __DIR__ . '/..' . '/laminas/laminas-code/src/Annotation/AnnotationManager.php',
+        'Laminas\\Code\\Annotation\\Parser\\DoctrineAnnotationParser' => __DIR__ . '/..' . '/laminas/laminas-code/src/Annotation/Parser/DoctrineAnnotationParser.php',
+        'Laminas\\Code\\Annotation\\Parser\\GenericAnnotationParser' => __DIR__ . '/..' . '/laminas/laminas-code/src/Annotation/Parser/GenericAnnotationParser.php',
+        'Laminas\\Code\\Annotation\\Parser\\ParserInterface' => __DIR__ . '/..' . '/laminas/laminas-code/src/Annotation/Parser/ParserInterface.php',
         'Laminas\\Code\\DeclareStatement' => __DIR__ . '/..' . '/laminas/laminas-code/src/DeclareStatement.php',
         'Laminas\\Code\\Exception\\BadMethodCallException' => __DIR__ . '/..' . '/laminas/laminas-code/src/Exception/BadMethodCallException.php',
         'Laminas\\Code\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/laminas/laminas-code/src/Exception/ExceptionInterface.php',
@@ -1802,11 +1849,11 @@ class ComposerStaticInit855f7f6259c45cbd0ca1f03c52f5f45d
         'Laminas\\Code\\Generator\\DocBlock\\Tag\\TagInterface' => __DIR__ . '/..' . '/laminas/laminas-code/src/Generator/DocBlock/Tag/TagInterface.php',
         'Laminas\\Code\\Generator\\DocBlock\\Tag\\ThrowsTag' => __DIR__ . '/..' . '/laminas/laminas-code/src/Generator/DocBlock/Tag/ThrowsTag.php',
         'Laminas\\Code\\Generator\\DocBlock\\Tag\\VarTag' => __DIR__ . '/..' . '/laminas/laminas-code/src/Generator/DocBlock/Tag/VarTag.php',
-        'Laminas\\Code\\Generator\\Exception\\ClassNotFoundException' => __DIR__ . '/..' . '/laminas/laminas-code/src/Generator/Exception/ClassNotFoundException.php',
         'Laminas\\Code\\Generator\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/laminas/laminas-code/src/Generator/Exception/ExceptionInterface.php',
         'Laminas\\Code\\Generator\\Exception\\InvalidArgumentException' => __DIR__ . '/..' . '/laminas/laminas-code/src/Generator/Exception/InvalidArgumentException.php',
         'Laminas\\Code\\Generator\\Exception\\RuntimeException' => __DIR__ . '/..' . '/laminas/laminas-code/src/Generator/Exception/RuntimeException.php',
         'Laminas\\Code\\Generator\\FileGenerator' => __DIR__ . '/..' . '/laminas/laminas-code/src/Generator/FileGenerator.php',
+        'Laminas\\Code\\Generator\\FileGeneratorRegistry' => __DIR__ . '/..' . '/laminas/laminas-code/src/Generator/FileGeneratorRegistry.php',
         'Laminas\\Code\\Generator\\GeneratorInterface' => __DIR__ . '/..' . '/laminas/laminas-code/src/Generator/GeneratorInterface.php',
         'Laminas\\Code\\Generator\\InterfaceGenerator' => __DIR__ . '/..' . '/laminas/laminas-code/src/Generator/InterfaceGenerator.php',
         'Laminas\\Code\\Generator\\MethodGenerator' => __DIR__ . '/..' . '/laminas/laminas-code/src/Generator/MethodGenerator.php',
@@ -1817,11 +1864,11 @@ class ComposerStaticInit855f7f6259c45cbd0ca1f03c52f5f45d
         'Laminas\\Code\\Generator\\TraitUsageGenerator' => __DIR__ . '/..' . '/laminas/laminas-code/src/Generator/TraitUsageGenerator.php',
         'Laminas\\Code\\Generator\\TraitUsageInterface' => __DIR__ . '/..' . '/laminas/laminas-code/src/Generator/TraitUsageInterface.php',
         'Laminas\\Code\\Generator\\TypeGenerator' => __DIR__ . '/..' . '/laminas/laminas-code/src/Generator/TypeGenerator.php',
-        'Laminas\\Code\\Generator\\TypeGenerator\\AtomicType' => __DIR__ . '/..' . '/laminas/laminas-code/src/Generator/TypeGenerator/AtomicType.php',
         'Laminas\\Code\\Generator\\ValueGenerator' => __DIR__ . '/..' . '/laminas/laminas-code/src/Generator/ValueGenerator.php',
         'Laminas\\Code\\Generic\\Prototype\\PrototypeClassFactory' => __DIR__ . '/..' . '/laminas/laminas-code/src/Generic/Prototype/PrototypeClassFactory.php',
         'Laminas\\Code\\Generic\\Prototype\\PrototypeGenericInterface' => __DIR__ . '/..' . '/laminas/laminas-code/src/Generic/Prototype/PrototypeGenericInterface.php',
         'Laminas\\Code\\Generic\\Prototype\\PrototypeInterface' => __DIR__ . '/..' . '/laminas/laminas-code/src/Generic/Prototype/PrototypeInterface.php',
+        'Laminas\\Code\\NameInformation' => __DIR__ . '/..' . '/laminas/laminas-code/src/NameInformation.php',
         'Laminas\\Code\\Reflection\\ClassReflection' => __DIR__ . '/..' . '/laminas/laminas-code/src/Reflection/ClassReflection.php',
         'Laminas\\Code\\Reflection\\DocBlockReflection' => __DIR__ . '/..' . '/laminas/laminas-code/src/Reflection/DocBlockReflection.php',
         'Laminas\\Code\\Reflection\\DocBlock\\TagManager' => __DIR__ . '/..' . '/laminas/laminas-code/src/Reflection/DocBlock/TagManager.php',
@@ -1840,12 +1887,60 @@ class ComposerStaticInit855f7f6259c45cbd0ca1f03c52f5f45d
         'Laminas\\Code\\Reflection\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/laminas/laminas-code/src/Reflection/Exception/ExceptionInterface.php',
         'Laminas\\Code\\Reflection\\Exception\\InvalidArgumentException' => __DIR__ . '/..' . '/laminas/laminas-code/src/Reflection/Exception/InvalidArgumentException.php',
         'Laminas\\Code\\Reflection\\Exception\\RuntimeException' => __DIR__ . '/..' . '/laminas/laminas-code/src/Reflection/Exception/RuntimeException.php',
+        'Laminas\\Code\\Reflection\\FileReflection' => __DIR__ . '/..' . '/laminas/laminas-code/src/Reflection/FileReflection.php',
         'Laminas\\Code\\Reflection\\FunctionReflection' => __DIR__ . '/..' . '/laminas/laminas-code/src/Reflection/FunctionReflection.php',
         'Laminas\\Code\\Reflection\\MethodReflection' => __DIR__ . '/..' . '/laminas/laminas-code/src/Reflection/MethodReflection.php',
         'Laminas\\Code\\Reflection\\ParameterReflection' => __DIR__ . '/..' . '/laminas/laminas-code/src/Reflection/ParameterReflection.php',
         'Laminas\\Code\\Reflection\\PropertyReflection' => __DIR__ . '/..' . '/laminas/laminas-code/src/Reflection/PropertyReflection.php',
         'Laminas\\Code\\Reflection\\ReflectionInterface' => __DIR__ . '/..' . '/laminas/laminas-code/src/Reflection/ReflectionInterface.php',
+        'Laminas\\Code\\Scanner\\AggregateDirectoryScanner' => __DIR__ . '/..' . '/laminas/laminas-code/src/Scanner/AggregateDirectoryScanner.php',
+        'Laminas\\Code\\Scanner\\AnnotationScanner' => __DIR__ . '/..' . '/laminas/laminas-code/src/Scanner/AnnotationScanner.php',
+        'Laminas\\Code\\Scanner\\CachingFileScanner' => __DIR__ . '/..' . '/laminas/laminas-code/src/Scanner/CachingFileScanner.php',
+        'Laminas\\Code\\Scanner\\ClassScanner' => __DIR__ . '/..' . '/laminas/laminas-code/src/Scanner/ClassScanner.php',
+        'Laminas\\Code\\Scanner\\ConstantScanner' => __DIR__ . '/..' . '/laminas/laminas-code/src/Scanner/ConstantScanner.php',
+        'Laminas\\Code\\Scanner\\DerivedClassScanner' => __DIR__ . '/..' . '/laminas/laminas-code/src/Scanner/DerivedClassScanner.php',
+        'Laminas\\Code\\Scanner\\DirectoryScanner' => __DIR__ . '/..' . '/laminas/laminas-code/src/Scanner/DirectoryScanner.php',
         'Laminas\\Code\\Scanner\\DocBlockScanner' => __DIR__ . '/..' . '/laminas/laminas-code/src/Scanner/DocBlockScanner.php',
+        'Laminas\\Code\\Scanner\\FileScanner' => __DIR__ . '/..' . '/laminas/laminas-code/src/Scanner/FileScanner.php',
+        'Laminas\\Code\\Scanner\\FunctionScanner' => __DIR__ . '/..' . '/laminas/laminas-code/src/Scanner/FunctionScanner.php',
+        'Laminas\\Code\\Scanner\\MethodScanner' => __DIR__ . '/..' . '/laminas/laminas-code/src/Scanner/MethodScanner.php',
+        'Laminas\\Code\\Scanner\\ParameterScanner' => __DIR__ . '/..' . '/laminas/laminas-code/src/Scanner/ParameterScanner.php',
+        'Laminas\\Code\\Scanner\\PropertyScanner' => __DIR__ . '/..' . '/laminas/laminas-code/src/Scanner/PropertyScanner.php',
+        'Laminas\\Code\\Scanner\\ScannerInterface' => __DIR__ . '/..' . '/laminas/laminas-code/src/Scanner/ScannerInterface.php',
+        'Laminas\\Code\\Scanner\\TokenArrayScanner' => __DIR__ . '/..' . '/laminas/laminas-code/src/Scanner/TokenArrayScanner.php',
+        'Laminas\\Code\\Scanner\\Util' => __DIR__ . '/..' . '/laminas/laminas-code/src/Scanner/Util.php',
+        'Laminas\\Code\\Scanner\\ValueScanner' => __DIR__ . '/..' . '/laminas/laminas-code/src/Scanner/ValueScanner.php',
+        'Laminas\\EventManager\\AbstractListenerAggregate' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/AbstractListenerAggregate.php',
+        'Laminas\\EventManager\\Event' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/Event.php',
+        'Laminas\\EventManager\\EventInterface' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/EventInterface.php',
+        'Laminas\\EventManager\\EventManager' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/EventManager.php',
+        'Laminas\\EventManager\\EventManagerAwareInterface' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/EventManagerAwareInterface.php',
+        'Laminas\\EventManager\\EventManagerAwareTrait' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/EventManagerAwareTrait.php',
+        'Laminas\\EventManager\\EventManagerInterface' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/EventManagerInterface.php',
+        'Laminas\\EventManager\\EventsCapableInterface' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/EventsCapableInterface.php',
+        'Laminas\\EventManager\\Exception\\DomainException' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/Exception/DomainException.php',
+        'Laminas\\EventManager\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/Exception/ExceptionInterface.php',
+        'Laminas\\EventManager\\Exception\\InvalidArgumentException' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/Exception/InvalidArgumentException.php',
+        'Laminas\\EventManager\\Exception\\InvalidCallbackException' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/Exception/InvalidCallbackException.php',
+        'Laminas\\EventManager\\Exception\\RuntimeException' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/Exception/RuntimeException.php',
+        'Laminas\\EventManager\\FilterChain' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/FilterChain.php',
+        'Laminas\\EventManager\\Filter\\FilterInterface' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/Filter/FilterInterface.php',
+        'Laminas\\EventManager\\Filter\\FilterIterator' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/Filter/FilterIterator.php',
+        'Laminas\\EventManager\\LazyEventListener' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/LazyEventListener.php',
+        'Laminas\\EventManager\\LazyListener' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/LazyListener.php',
+        'Laminas\\EventManager\\LazyListenerAggregate' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/LazyListenerAggregate.php',
+        'Laminas\\EventManager\\ListenerAggregateInterface' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/ListenerAggregateInterface.php',
+        'Laminas\\EventManager\\ListenerAggregateTrait' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/ListenerAggregateTrait.php',
+        'Laminas\\EventManager\\ResponseCollection' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/ResponseCollection.php',
+        'Laminas\\EventManager\\SharedEventManager' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/SharedEventManager.php',
+        'Laminas\\EventManager\\SharedEventManagerInterface' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/SharedEventManagerInterface.php',
+        'Laminas\\EventManager\\SharedEventsCapableInterface' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/SharedEventsCapableInterface.php',
+        'Laminas\\EventManager\\Test\\EventListenerIntrospectionTrait' => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src/Test/EventListenerIntrospectionTrait.php',
+        'Laminas\\ZendFrameworkBridge\\Autoloader' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/Autoloader.php',
+        'Laminas\\ZendFrameworkBridge\\ConfigPostProcessor' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/ConfigPostProcessor.php',
+        'Laminas\\ZendFrameworkBridge\\Module' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/Module.php',
+        'Laminas\\ZendFrameworkBridge\\Replacements' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/Replacements.php',
+        'Laminas\\ZendFrameworkBridge\\RewriteRules' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/RewriteRules.php',
         'Locale' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/Resources/stubs/Locale.php',
         'Monolog\\DateTimeImmutable' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/DateTimeImmutable.php',
         'Monolog\\ErrorHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/ErrorHandler.php',
@@ -3119,6 +3214,18 @@ class ComposerStaticInit855f7f6259c45cbd0ca1f03c52f5f45d
         'Sensio\\Bundle\\FrameworkExtraBundle\\SensioFrameworkExtraBundle' => __DIR__ . '/..' . '/sensio/framework-extra-bundle/src/SensioFrameworkExtraBundle.php',
         'Sensio\\Bundle\\FrameworkExtraBundle\\Templating\\TemplateGuesser' => __DIR__ . '/..' . '/sensio/framework-extra-bundle/src/Templating/TemplateGuesser.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
+        'SymfonyCasts\\Bundle\\VerifyEmail\\DependencyInjection\\Configuration' => __DIR__ . '/..' . '/symfonycasts/verify-email-bundle/src/DependencyInjection/Configuration.php',
+        'SymfonyCasts\\Bundle\\VerifyEmail\\DependencyInjection\\SymfonyCastsVerifyEmailExtension' => __DIR__ . '/..' . '/symfonycasts/verify-email-bundle/src/DependencyInjection/SymfonyCastsVerifyEmailExtension.php',
+        'SymfonyCasts\\Bundle\\VerifyEmail\\Exception\\ExpiredSignatureException' => __DIR__ . '/..' . '/symfonycasts/verify-email-bundle/src/Exception/ExpiredSignatureException.php',
+        'SymfonyCasts\\Bundle\\VerifyEmail\\Exception\\InvalidSignatureException' => __DIR__ . '/..' . '/symfonycasts/verify-email-bundle/src/Exception/InvalidSignatureException.php',
+        'SymfonyCasts\\Bundle\\VerifyEmail\\Exception\\VerifyEmailExceptionInterface' => __DIR__ . '/..' . '/symfonycasts/verify-email-bundle/src/Exception/VerifyEmailExceptionInterface.php',
+        'SymfonyCasts\\Bundle\\VerifyEmail\\Exception\\WrongEmailVerifyException' => __DIR__ . '/..' . '/symfonycasts/verify-email-bundle/src/Exception/WrongEmailVerifyException.php',
+        'SymfonyCasts\\Bundle\\VerifyEmail\\Generator\\VerifyEmailTokenGenerator' => __DIR__ . '/..' . '/symfonycasts/verify-email-bundle/src/Generator/VerifyEmailTokenGenerator.php',
+        'SymfonyCasts\\Bundle\\VerifyEmail\\Model\\VerifyEmailSignatureComponents' => __DIR__ . '/..' . '/symfonycasts/verify-email-bundle/src/Model/VerifyEmailSignatureComponents.php',
+        'SymfonyCasts\\Bundle\\VerifyEmail\\SymfonyCastsVerifyEmailBundle' => __DIR__ . '/..' . '/symfonycasts/verify-email-bundle/src/SymfonyCastsVerifyEmailBundle.php',
+        'SymfonyCasts\\Bundle\\VerifyEmail\\Util\\VerifyEmailQueryUtility' => __DIR__ . '/..' . '/symfonycasts/verify-email-bundle/src/Util/VerifyEmailQueryUtility.php',
+        'SymfonyCasts\\Bundle\\VerifyEmail\\VerifyEmailHelper' => __DIR__ . '/..' . '/symfonycasts/verify-email-bundle/src/VerifyEmailHelper.php',
+        'SymfonyCasts\\Bundle\\VerifyEmail\\VerifyEmailHelperInterface' => __DIR__ . '/..' . '/symfonycasts/verify-email-bundle/src/VerifyEmailHelperInterface.php',
         'Symfony\\Bridge\\Doctrine\\CacheWarmer\\ProxyCacheWarmer' => __DIR__ . '/..' . '/symfony/doctrine-bridge/CacheWarmer/ProxyCacheWarmer.php',
         'Symfony\\Bridge\\Doctrine\\ContainerAwareEventManager' => __DIR__ . '/..' . '/symfony/doctrine-bridge/ContainerAwareEventManager.php',
         'Symfony\\Bridge\\Doctrine\\DataCollector\\DoctrineDataCollector' => __DIR__ . '/..' . '/symfony/doctrine-bridge/DataCollector/DoctrineDataCollector.php',
@@ -3367,6 +3474,7 @@ class ComposerStaticInit855f7f6259c45cbd0ca1f03c52f5f45d
         'Symfony\\Bundle\\MakerBundle\\ConsoleStyle' => __DIR__ . '/..' . '/symfony/maker-bundle/src/ConsoleStyle.php',
         'Symfony\\Bundle\\MakerBundle\\Console\\MigrationDiffFilteredOutput' => __DIR__ . '/..' . '/symfony/maker-bundle/src/Console/MigrationDiffFilteredOutput.php',
         'Symfony\\Bundle\\MakerBundle\\DependencyBuilder' => __DIR__ . '/..' . '/symfony/maker-bundle/src/DependencyBuilder.php',
+        'Symfony\\Bundle\\MakerBundle\\DependencyInjection\\CompilerPass\\DoctrineAttributesCheckPass' => __DIR__ . '/..' . '/symfony/maker-bundle/src/DependencyInjection/CompilerPass/DoctrineAttributesCheckPass.php',
         'Symfony\\Bundle\\MakerBundle\\DependencyInjection\\CompilerPass\\MakeCommandRegistrationPass' => __DIR__ . '/..' . '/symfony/maker-bundle/src/DependencyInjection/CompilerPass/MakeCommandRegistrationPass.php',
         'Symfony\\Bundle\\MakerBundle\\DependencyInjection\\CompilerPass\\RemoveMissingParametersPass' => __DIR__ . '/..' . '/symfony/maker-bundle/src/DependencyInjection/CompilerPass/RemoveMissingParametersPass.php',
         'Symfony\\Bundle\\MakerBundle\\DependencyInjection\\CompilerPass\\SetDoctrineAnnotatedPrefixesPass' => __DIR__ . '/..' . '/symfony/maker-bundle/src/DependencyInjection/CompilerPass/SetDoctrineAnnotatedPrefixesPass.php',
@@ -5232,6 +5340,7 @@ class ComposerStaticInit855f7f6259c45cbd0ca1f03c52f5f45d
         'Symfony\\Component\\Security\\Http\\Controller\\UserValueResolver' => __DIR__ . '/..' . '/symfony/security-http/Controller/UserValueResolver.php',
         'Symfony\\Component\\Security\\Http\\EntryPoint\\AuthenticationEntryPointInterface' => __DIR__ . '/..' . '/symfony/security-http/EntryPoint/AuthenticationEntryPointInterface.php',
         'Symfony\\Component\\Security\\Http\\EntryPoint\\BasicAuthenticationEntryPoint' => __DIR__ . '/..' . '/symfony/security-http/EntryPoint/BasicAuthenticationEntryPoint.php',
+        'Symfony\\Component\\Security\\Http\\EntryPoint\\Exception\\NotAnEntryPointException' => __DIR__ . '/..' . '/symfony/security-http/EntryPoint/Exception/NotAnEntryPointException.php',
         'Symfony\\Component\\Security\\Http\\EntryPoint\\FormAuthenticationEntryPoint' => __DIR__ . '/..' . '/symfony/security-http/EntryPoint/FormAuthenticationEntryPoint.php',
         'Symfony\\Component\\Security\\Http\\EntryPoint\\RetryAuthenticationEntryPoint' => __DIR__ . '/..' . '/symfony/security-http/EntryPoint/RetryAuthenticationEntryPoint.php',
         'Symfony\\Component\\Security\\Http\\EventListener\\CheckCredentialsListener' => __DIR__ . '/..' . '/symfony/security-http/EventListener/CheckCredentialsListener.php',
@@ -5925,6 +6034,23 @@ class ComposerStaticInit855f7f6259c45cbd0ca1f03c52f5f45d
         'Symfony\\Runtime\\Symfony\\Component\\HttpFoundation\\RequestRuntime' => __DIR__ . '/..' . '/symfony/runtime/Internal/HttpFoundation/RequestRuntime.php',
         'Symfony\\Runtime\\Symfony\\Component\\HttpFoundation\\ResponseRuntime' => __DIR__ . '/..' . '/symfony/runtime/Internal/HttpFoundation/ResponseRuntime.php',
         'Symfony\\Runtime\\Symfony\\Component\\HttpKernel\\HttpKernelInterfaceRuntime' => __DIR__ . '/..' . '/symfony/runtime/Internal/HttpKernel/HttpKernelInterfaceRuntime.php',
+        'Symfony\\WebpackEncoreBundle\\Asset\\EntrypointLookup' => __DIR__ . '/..' . '/symfony/webpack-encore-bundle/src/Asset/EntrypointLookup.php',
+        'Symfony\\WebpackEncoreBundle\\Asset\\EntrypointLookupCollection' => __DIR__ . '/..' . '/symfony/webpack-encore-bundle/src/Asset/EntrypointLookupCollection.php',
+        'Symfony\\WebpackEncoreBundle\\Asset\\EntrypointLookupCollectionInterface' => __DIR__ . '/..' . '/symfony/webpack-encore-bundle/src/Asset/EntrypointLookupCollectionInterface.php',
+        'Symfony\\WebpackEncoreBundle\\Asset\\EntrypointLookupInterface' => __DIR__ . '/..' . '/symfony/webpack-encore-bundle/src/Asset/EntrypointLookupInterface.php',
+        'Symfony\\WebpackEncoreBundle\\Asset\\IntegrityDataProviderInterface' => __DIR__ . '/..' . '/symfony/webpack-encore-bundle/src/Asset/IntegrityDataProviderInterface.php',
+        'Symfony\\WebpackEncoreBundle\\Asset\\TagRenderer' => __DIR__ . '/..' . '/symfony/webpack-encore-bundle/src/Asset/TagRenderer.php',
+        'Symfony\\WebpackEncoreBundle\\CacheWarmer\\EntrypointCacheWarmer' => __DIR__ . '/..' . '/symfony/webpack-encore-bundle/src/CacheWarmer/EntrypointCacheWarmer.php',
+        'Symfony\\WebpackEncoreBundle\\DependencyInjection\\Configuration' => __DIR__ . '/..' . '/symfony/webpack-encore-bundle/src/DependencyInjection/Configuration.php',
+        'Symfony\\WebpackEncoreBundle\\DependencyInjection\\WebpackEncoreExtension' => __DIR__ . '/..' . '/symfony/webpack-encore-bundle/src/DependencyInjection/WebpackEncoreExtension.php',
+        'Symfony\\WebpackEncoreBundle\\EventListener\\ExceptionListener' => __DIR__ . '/..' . '/symfony/webpack-encore-bundle/src/EventListener/ExceptionListener.php',
+        'Symfony\\WebpackEncoreBundle\\EventListener\\PreLoadAssetsEventListener' => __DIR__ . '/..' . '/symfony/webpack-encore-bundle/src/EventListener/PreLoadAssetsEventListener.php',
+        'Symfony\\WebpackEncoreBundle\\Event\\RenderAssetTagEvent' => __DIR__ . '/..' . '/symfony/webpack-encore-bundle/src/Event/RenderAssetTagEvent.php',
+        'Symfony\\WebpackEncoreBundle\\Exception\\EntrypointNotFoundException' => __DIR__ . '/..' . '/symfony/webpack-encore-bundle/src/Exception/EntrypointNotFoundException.php',
+        'Symfony\\WebpackEncoreBundle\\Exception\\UndefinedBuildException' => __DIR__ . '/..' . '/symfony/webpack-encore-bundle/src/Exception/UndefinedBuildException.php',
+        'Symfony\\WebpackEncoreBundle\\Twig\\EntryFilesTwigExtension' => __DIR__ . '/..' . '/symfony/webpack-encore-bundle/src/Twig/EntryFilesTwigExtension.php',
+        'Symfony\\WebpackEncoreBundle\\Twig\\StimulusTwigExtension' => __DIR__ . '/..' . '/symfony/webpack-encore-bundle/src/Twig/StimulusTwigExtension.php',
+        'Symfony\\WebpackEncoreBundle\\WebpackEncoreBundle' => __DIR__ . '/..' . '/symfony/webpack-encore-bundle/src/WebpackEncoreBundle.php',
         'TheSeer\\Tokenizer\\Exception' => __DIR__ . '/..' . '/theseer/tokenizer/src/Exception.php',
         'TheSeer\\Tokenizer\\NamespaceUri' => __DIR__ . '/..' . '/theseer/tokenizer/src/NamespaceUri.php',
         'TheSeer\\Tokenizer\\NamespaceUriException' => __DIR__ . '/..' . '/theseer/tokenizer/src/NamespaceUriException.php',
@@ -6169,6 +6295,7 @@ class ComposerStaticInit855f7f6259c45cbd0ca1f03c52f5f45d
         'phpDocumentor\\Reflection\\PseudoTypes\\CallableString' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/PseudoTypes/CallableString.php',
         'phpDocumentor\\Reflection\\PseudoTypes\\False_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/PseudoTypes/False_.php',
         'phpDocumentor\\Reflection\\PseudoTypes\\HtmlEscapedString' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/PseudoTypes/HtmlEscapedString.php',
+        'phpDocumentor\\Reflection\\PseudoTypes\\LiteralString' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/PseudoTypes/LiteralString.php',
         'phpDocumentor\\Reflection\\PseudoTypes\\LowercaseString' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/PseudoTypes/LowercaseString.php',
         'phpDocumentor\\Reflection\\PseudoTypes\\NonEmptyLowercaseString' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/PseudoTypes/NonEmptyLowercaseString.php',
         'phpDocumentor\\Reflection\\PseudoTypes\\NonEmptyString' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/PseudoTypes/NonEmptyString.php',
@@ -6214,9 +6341,9 @@ class ComposerStaticInit855f7f6259c45cbd0ca1f03c52f5f45d
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit855f7f6259c45cbd0ca1f03c52f5f45d::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit855f7f6259c45cbd0ca1f03c52f5f45d::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit855f7f6259c45cbd0ca1f03c52f5f45d::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit2d7333c718a9a29948c87926731f6df4::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit2d7333c718a9a29948c87926731f6df4::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit2d7333c718a9a29948c87926731f6df4::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -1,22 +1,31 @@
 {
-  "name": "infol3",
+  "name": "projetl3s1",
   "version": "1.0.0",
-  "description": "oui",
-  "main": "index.js",
+  "description": "",
+  "main": "server.js",
   "directories": {
     "test": "tests"
   },
+  "dependencies": {
+    "axentix": "^1.3.3",
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "socket.io": "^4.2.0"
+  },
+  "devDependencies": {
+    "@symfony/stimulus-bridge": "^2.1.0",
+    "@symfony/webpack-encore": "^1.6.1",
+    "nodemon": "^2.0.13",
+    "stimulus": "^3.0.1",
+    "webpack-notifier": "^1.14.1"
+  },
   "scripts": {
-    "test": "node index.js"
+    "start": "node server",
+    "dev": "nodemon server"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Sylver-Wolf/infoL3.git"
-  },
-  "author": "Raphael",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Sylver-Wolf/infoL3/issues"
-  },
-  "homepage": "https://github.com/Sylver-Wolf/infoL3#readme"
+  "author": "Moi",
+  "license": "MIT"
 }
