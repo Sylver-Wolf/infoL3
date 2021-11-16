@@ -6,3 +6,5 @@ config/packages/doctrine.yaml
 migrations/
 
 var/cache/
+
+var/log/dev.log
