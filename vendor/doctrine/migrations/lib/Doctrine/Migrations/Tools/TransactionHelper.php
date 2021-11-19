@@ -8,8 +8,6 @@ use Doctrine\DBAL\Connection;
 use Doctrine\Deprecations\Deprecation;
 use PDO;
 
-use function method_exists;
-
 /**
  * @internal
  */
@@ -59,13 +57,10 @@ DEPRECATION
 
     private static function inTransaction(Connection $connection): bool
     {
-        $innermostConnection = $connection;
-        while (method_exists($innermostConnection, 'getWrappedConnection')) {
-            $innermostConnection = $innermostConnection->getWrappedConnection();
-        }
+        $wrappedConnection = $connection->getWrappedConnection();
 
         /* Attempt to commit or rollback while no transaction is running
            results in an exception since PHP 8 + pdo_mysql combination */
-        return ! $innermostConnection instanceof PDO || $innermostConnection->inTransaction();
+        return ! $wrappedConnection instanceof PDO || $wrappedConnection->inTransaction();
     }
 }

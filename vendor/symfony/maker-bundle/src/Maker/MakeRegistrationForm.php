@@ -13,7 +13,6 @@ namespace Symfony\Bundle\MakerBundle\Maker;
 
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use Doctrine\Common\Annotations\Annotation;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\MakerBundle\ConsoleStyle;
@@ -48,7 +47,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
-use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Symfony\Component\Validator\Validation;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Model\VerifyEmailSignatureComponents;
@@ -80,7 +78,6 @@ final class MakeRegistrationForm extends AbstractMaker
     private $firewallName;
     private $redirectRouteName;
     private $addUniqueEntityConstraint;
-    private $useNewAuthenticatorSystem = false;
 
     public function __construct(FileManager $fileManager, FormTypeRenderer $formTypeRenderer, RouterInterface $router, DoctrineHelper $doctrineHelper)
     {
@@ -118,11 +115,6 @@ final class MakeRegistrationForm extends AbstractMaker
         $manipulator = new YamlSourceManipulator($this->fileManager->getFileContents($path));
         $securityData = $manipulator->getData();
         $providersData = $securityData['security']['providers'] ?? [];
-
-        // Determine if we should use new security features introduced in Symfony 5.2
-        if ($securityData['security']['enable_authenticator_manager'] ?? false) {
-            $this->useNewAuthenticatorSystem = true;
-        }
 
         $this->userClass = $interactiveSecurityHelper->guessUserClass(
             $io,
@@ -300,7 +292,6 @@ final class MakeRegistrationForm extends AbstractMaker
             Response::class,
             Route::class,
             $passwordHasher,
-            EntityManagerInterface::class,
         ];
 
         if ($this->willVerifyEmail) {
@@ -316,11 +307,7 @@ final class MakeRegistrationForm extends AbstractMaker
 
         if ($this->autoLoginAuthenticator) {
             $useStatements[] = $this->autoLoginAuthenticator;
-            if ($this->useNewAuthenticatorSystem) {
-                $useStatements[] = UserAuthenticatorInterface::class;
-            } else {
-                $useStatements[] = GuardAuthenticatorHandler::class;
-            }
+            $useStatements[] = GuardAuthenticatorHandler::class;
         }
 
         $generator->generateController(
@@ -341,11 +328,10 @@ final class MakeRegistrationForm extends AbstractMaker
                     'email_getter' => $this->emailGetter,
                     'authenticator_class_name' => $this->autoLoginAuthenticator ? Str::getShortClassName($this->autoLoginAuthenticator) : null,
                     'authenticator_full_class_name' => $this->autoLoginAuthenticator,
-                    'use_new_authenticator_system' => $this->useNewAuthenticatorSystem,
                     'firewall_name' => $this->firewallName,
                     'redirect_route_name' => $this->redirectRouteName,
-                    'password_hasher_class_details' => ($passwordClassDetails = $generator->createClassNameDetails($passwordHasher, '\\')),
-                    'password_hasher_variable_name' => str_replace('Interface', '', sprintf('$%s', lcfirst($passwordClassDetails->getShortName()))), // @legacy see passwordHasher conditional above
+                    'password_class_details' => ($passwordClassDetails = $generator->createClassNameDetails($passwordHasher, '\\')),
+                    'password_variable_name' => sprintf('$%s', lcfirst($passwordClassDetails->getShortName())), // @legacy see passwordHasher conditional above
                     'use_password_hasher' => UserPasswordHasherInterface::class === $passwordHasher, // @legacy see passwordHasher conditional above
                 ],
                 $userRepoVars
@@ -493,7 +479,7 @@ final class MakeRegistrationForm extends AbstractMaker
 
         $dependencies->addClassDependency(
             DoctrineBundle::class,
-            'orm'
+            'orm-pack'
         );
 
         $dependencies->addClassDependency(

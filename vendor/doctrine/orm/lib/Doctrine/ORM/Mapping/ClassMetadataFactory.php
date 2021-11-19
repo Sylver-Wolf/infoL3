@@ -1,6 +1,22 @@
 <?php
 
-declare(strict_types=1);
+/*
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * This software consists of voluntary contributions made by many individuals
+ * and is licensed under the MIT license. For more information, see
+ * <http://www.doctrine-project.org>.
+ */
 
 namespace Doctrine\ORM\Mapping;
 
@@ -12,16 +28,12 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Doctrine\ORM\Event\OnClassMetadataNotFoundEventArgs;
 use Doctrine\ORM\Events;
-use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\Id\AssignedGenerator;
 use Doctrine\ORM\Id\BigIntegerIdentityGenerator;
 use Doctrine\ORM\Id\IdentityGenerator;
 use Doctrine\ORM\Id\SequenceGenerator;
 use Doctrine\ORM\Id\UuidGenerator;
-use Doctrine\ORM\Mapping\Exception\CannotGenerateIds;
-use Doctrine\ORM\Mapping\Exception\InvalidCustomGenerator;
-use Doctrine\ORM\Mapping\Exception\TableGeneratorNotImplementedYet;
-use Doctrine\ORM\Mapping\Exception\UnknownGeneratorType;
+use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\Mapping\AbstractClassMetadataFactory;
 use Doctrine\Persistence\Mapping\ClassMetadata as ClassMetadataInterface;
 use Doctrine\Persistence\Mapping\Driver\MappingDriver;
@@ -36,10 +48,8 @@ use function end;
 use function explode;
 use function in_array;
 use function is_subclass_of;
-use function strlen;
 use function strpos;
 use function strtolower;
-use function substr;
 
 /**
  * The ClassMetadataFactory is used to create ClassMetadata objects that contain all the
@@ -184,7 +194,9 @@ class ClassMetadataFactory extends AbstractClassMetadataFactory
                 $class->setPrimaryTable($parent->table);
             }
 
-            $this->addInheritedIndexes($class, $parent);
+            if ($parent) {
+                $this->addInheritedIndexes($class, $parent);
+            }
 
             if ($parent->cache) {
                 $class->cache = $parent->cache;
@@ -274,8 +286,8 @@ class ClassMetadataFactory extends AbstractClassMetadataFactory
             } else {
                 assert($parent instanceof ClassMetadataInfo); // https://github.com/doctrine/orm/issues/8746
                 if (
-                    ! $class->reflClass->isAbstract()
-                    && ! in_array($class->name, $class->discriminatorMap, true)
+                    (! $class->reflClass || ! $class->reflClass->isAbstract())
+                    && ! in_array($class->name, $class->discriminatorMap)
                 ) {
                     throw MappingException::mappedClassNotPartOfDiscriminatorMap($class->name, $class->rootEntityName);
                 }
@@ -544,7 +556,13 @@ class ClassMetadataFactory extends AbstractClassMetadataFactory
     {
         $idGenType = $class->generatorType;
         if ($idGenType === ClassMetadata::GENERATOR_TYPE_AUTO) {
-            $class->setIdGeneratorType($this->determineIdGeneratorStrategy($this->getTargetPlatform()));
+            if ($this->getTargetPlatform()->prefersSequences()) {
+                $class->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_SEQUENCE);
+            } elseif ($this->getTargetPlatform()->prefersIdentityColumns()) {
+                $class->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_IDENTITY);
+            } else {
+                $class->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_TABLE);
+            }
         }
 
         // Create & assign an appropriate ID generator instance
@@ -560,7 +578,7 @@ class ClassMetadataFactory extends AbstractClassMetadataFactory
                     $sequencePrefix = $class->getSequencePrefix($this->getTargetPlatform());
                     $sequenceName   = $this->getTargetPlatform()->getIdentitySequenceName($sequencePrefix, $columnName);
                     $definition     = [
-                        'sequenceName' => $this->truncateSequenceName($sequenceName),
+                        'sequenceName' => $this->getTargetPlatform()->fixSchemaElementName($sequenceName),
                     ];
 
                     if ($quoted) {
@@ -592,7 +610,7 @@ class ClassMetadataFactory extends AbstractClassMetadataFactory
                     $quoted       = isset($class->fieldMappings[$fieldName]['quoted']) || isset($class->table['quoted']);
 
                     $definition = [
-                        'sequenceName'      => $this->truncateSequenceName($sequenceName),
+                        'sequenceName'      => $this->getTargetPlatform()->fixSchemaElementName($sequenceName),
                         'allocationSize'    => 1,
                         'initialValue'      => 1,
                     ];
@@ -606,7 +624,7 @@ class ClassMetadataFactory extends AbstractClassMetadataFactory
 
                 $sequenceGenerator = new SequenceGenerator(
                     $this->em->getConfiguration()->getQuoteStrategy()->getSequenceName($definition, $class, $this->getTargetPlatform()),
-                    (int) $definition['allocationSize']
+                    $definition['allocationSize']
                 );
                 $class->setIdGenerator($sequenceGenerator);
                 break;
@@ -616,68 +634,31 @@ class ClassMetadataFactory extends AbstractClassMetadataFactory
                 break;
 
             case ClassMetadata::GENERATOR_TYPE_UUID:
-                Deprecation::trigger(
-                    'doctrine/orm',
-                    'https://github.com/doctrine/orm/issues/7312',
-                    'Mapping for %s: the "UUID" id generator strategy is deprecated with no replacement',
-                    $class->name
-                );
                 $class->setIdGenerator(new UuidGenerator());
+                break;
+
+            case ClassMetadata::GENERATOR_TYPE_TABLE:
+                throw new ORMException('TableGenerator not yet implemented.');
+
                 break;
 
             case ClassMetadata::GENERATOR_TYPE_CUSTOM:
                 $definition = $class->customGeneratorDefinition;
                 if ($definition === null) {
-                    throw InvalidCustomGenerator::onClassNotConfigured();
+                    throw new ORMException("Can't instantiate custom generator : no custom generator definition");
                 }
 
                 if (! class_exists($definition['class'])) {
-                    throw InvalidCustomGenerator::onMissingClass($definition);
+                    throw new ORMException("Can't instantiate custom generator : " .
+                        $definition['class']);
                 }
 
                 $class->setIdGenerator(new $definition['class']());
                 break;
 
             default:
-                throw UnknownGeneratorType::create($class->generatorType);
+                throw new ORMException('Unknown generator type: ' . $class->generatorType);
         }
-    }
-
-    private function determineIdGeneratorStrategy(AbstractPlatform $platform): int
-    {
-        if (
-            $platform instanceof Platforms\OraclePlatform
-            || $platform instanceof Platforms\PostgreSQL94Platform
-            || $platform instanceof Platforms\PostgreSQLPlatform
-        ) {
-            return ClassMetadata::GENERATOR_TYPE_SEQUENCE;
-        }
-
-        if ($platform->supportsIdentityColumns()) {
-            return ClassMetadata::GENERATOR_TYPE_IDENTITY;
-        }
-
-        if ($platform->supportsSequences()) {
-            return ClassMetadata::GENERATOR_TYPE_SEQUENCE;
-        }
-
-        throw CannotGenerateIds::withPlatform($platform);
-    }
-
-    private function truncateSequenceName(string $schemaElementName): string
-    {
-        $platform = $this->getTargetPlatform();
-        if (! in_array($platform->getName(), ['oracle', 'sqlanywhere'], true)) {
-            return $schemaElementName;
-        }
-
-        $maxIdentifierLength = $platform->getMaxIdentifierLength();
-
-        if (strlen($schemaElementName) > $maxIdentifierLength) {
-            return substr($schemaElementName, 0, $maxIdentifierLength);
-        }
-
-        return $schemaElementName;
     }
 
     /**
@@ -687,6 +668,8 @@ class ClassMetadataFactory extends AbstractClassMetadataFactory
     {
         if ($parent->isIdGeneratorSequence()) {
             $class->setSequenceGeneratorDefinition($parent->sequenceGeneratorDefinition);
+        } elseif ($parent->isIdGeneratorTable()) {
+            $class->tableGeneratorDefinition = $parent->tableGeneratorDefinition;
         }
 
         if ($parent->generatorType) {

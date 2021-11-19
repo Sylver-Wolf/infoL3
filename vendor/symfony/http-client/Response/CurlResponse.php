@@ -247,15 +247,13 @@ final class CurlResponse implements ResponseInterface, StreamableInterface
 
     public function __destruct()
     {
-        try {
-            if (null === $this->timeout) {
-                return; // Unused pushed response
-            }
+        curl_setopt($this->handle, \CURLOPT_VERBOSE, false);
 
-            $this->doDestruct();
-        } finally {
-            curl_setopt($this->handle, \CURLOPT_VERBOSE, false);
+        if (null === $this->timeout) {
+            return; // Unused pushed response
         }
+
+        $this->doDestruct();
     }
 
     /**
@@ -313,10 +311,6 @@ final class CurlResponse implements ResponseInterface, StreamableInterface
                     if (0 === curl_multi_add_handle($multi->handle, $ch)) {
                         continue;
                     }
-                }
-
-                if (\CURLE_RECV_ERROR === $result && 'H' === $waitFor[0] && 400 <= ($responses[(int) $ch]->info['http_code'] ?? 0)) {
-                    $multi->handlesActivity[$id][] = new FirstChunk();
                 }
 
                 $multi->handlesActivity[$id][] = null;

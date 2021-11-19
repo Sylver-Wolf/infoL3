@@ -3,37 +3,19 @@
 {% block title %}
 {{ article.title }}
 {% endblock %}
+
 {% block body %}
-<style>
-#article{
-    margin-left: 6%; 
-    margin-right: 6%;
-    margin-top: 2%;
-    padding-left:3%; 
-    padding-right:3%;
-    padding-top:1.5%;
-    padding-bottom:1.5%;
-    background-color: #292929;
-}
-h1{
-    color: #DDDDDD;
-    font-size: 225%;
-}
-p{
-    color: #DDDDDD;
-}
-.text-muted{
-    font-size: 12%;
-}
-</style>
-<div id="article">
-    <h1>{{ article.title }}</h1>
-    <img src={{article.image}} />
-    <small class="text-muted">Date de publication : {{ article.createdAt|date("d/m/Y") }}</small>
-    <p>
-        {{ article.description }}
-    </p>
-</div>
+    <div class="container">
+        <h1>{{ article.title }}</h1>
+        <p>
+            {{ article.description }}
+        </p>
+        
+        <img src={{article.image}} />
+        <small class="text-muted">Date de publication : {{ article.createdAt|date("d/m/Y") }}</small>
+    </div>
+
+
 {% endblock %}
 
 

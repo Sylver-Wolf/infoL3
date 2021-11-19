@@ -374,7 +374,9 @@ final class MakeEntity extends AbstractMaker implements InputAwareMakerInterface
         }
 
         $type = null;
-        $types = $this->getTypesMap();
+        $types = Type::getTypesMap();
+        // remove deprecated json_array
+        unset($types[Type::JSON_ARRAY]);
 
         $allValidTypes = array_merge(
             array_keys($types),
@@ -426,7 +428,9 @@ final class MakeEntity extends AbstractMaker implements InputAwareMakerInterface
 
     private function printAvailableTypes(ConsoleStyle $io)
     {
-        $allTypes = $this->getTypesMap();
+        $allTypes = Type::getTypesMap();
+        // remove deprecated json_array
+        unset($allTypes[Type::JSON_ARRAY]);
 
         if ('Hyper' === getenv('TERM_PROGRAM')) {
             $wizard = 'wizard 🧙';
@@ -880,17 +884,5 @@ final class MakeEntity extends AbstractMaker implements InputAwareMakerInterface
     private function getEntityNamespace(): string
     {
         return $this->doctrineHelper->getEntityNamespace();
-    }
-
-    private function getTypesMap(): array
-    {
-        $types = Type::getTypesMap();
-
-        // remove deprecated json_array if it exists
-        if (\defined(sprintf('%s::JSON_ARRAY', Type::class))) {
-            unset($types[Type::JSON_ARRAY]);
-        }
-
-        return $types;
     }
 }

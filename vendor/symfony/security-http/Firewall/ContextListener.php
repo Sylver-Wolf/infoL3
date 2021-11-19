@@ -248,9 +248,8 @@ class ContextListener extends AbstractListener
                     $context = ['provider' => \get_class($provider), 'username' => method_exists($refreshedUser, 'getUserIdentifier') ? $refreshedUser->getUserIdentifier() : $refreshedUser->getUsername()];
 
                     if ($token instanceof SwitchUserToken) {
-                        $originalToken = $token->getOriginalToken();
-                        // @deprecated since Symfony 5.3, change to $originalToken->getUserIdentifier() in 6.0
-                        $context['impersonator_username'] = method_exists($originalToken, 'getUserIdentifier') ? $originalToken->getUserIdentifier() : $originalToken->getUsername();
+                        // @deprecated since Symfony 5.3, change to $token->getUserIdentifier() in 6.0
+                        $context['impersonator_username'] = method_exists($token, 'getUserIdentifier') ? $token->getUserIdentifier() : $token->getOriginalToken()->getUsername();
                     }
 
                     $this->logger->debug('User was reloaded from a user provider.', $context);

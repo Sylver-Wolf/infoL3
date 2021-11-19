@@ -522,11 +522,11 @@ class AttributeDriver extends AnnotationDriver
      *
      * @return mixed[]
      * @psalm-return array{
-     *                   name: string|null,
+     *                   name: string,
      *                   unique: bool,
      *                   nullable: bool,
      *                   onDelete: mixed,
-     *                   columnDefinition: string|null,
+     *                   columnDefinition: string,
      *                   referencedColumnName: string
      *               }
      */

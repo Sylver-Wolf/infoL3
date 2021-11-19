@@ -260,7 +260,7 @@ final class MakeCrud extends AbstractMaker
 
         $dependencies->addClassDependency(
             DoctrineBundle::class,
-            'orm'
+            'orm-pack'
         );
 
         $dependencies->addClassDependency(

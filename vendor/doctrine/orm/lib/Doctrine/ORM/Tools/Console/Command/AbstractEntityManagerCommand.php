@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Doctrine\ORM\Tools\Console\Command;
 
 use Doctrine\Deprecations\Deprecation;
