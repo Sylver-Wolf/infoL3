@@ -58,7 +58,8 @@ nav{
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
             </li>
-            {% else %}
+            {% endif %}
+            {% if not is_granted('ROLE_USER') %}
             <li class="nav-item">
                 <a class="nav-link" href="../login">Se connecter</a>
             </li>
@@ -72,16 +73,7 @@ nav{
 
 {% endblock %}
 
-{% block body %}
-<style>
-
-body{
-    margin-left: 3%; 
-    margin-right: 3%;
-}
-
-</style>
-{% endblock %}
+{% block body %} {% endblock %}
 
 
 

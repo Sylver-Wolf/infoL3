@@ -5,7 +5,9 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '799b07bf351adf3affdb30b5b568fff4552eab41',
+
+        'reference' => '76f2ad9091387033b500f05007e051588770af2a',
+
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +18,9 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '799b07bf351adf3affdb30b5b568fff4552eab41',
+
+            'reference' => '76f2ad9091387033b500f05007e051588770af2a',
+
             'dev_requirement' => false,
         ),
         'composer/package-versions-deprecated' => array(
@@ -188,6 +192,15 @@
             'install_path' => __DIR__ . '/../friendsofphp/proxy-manager-lts',
             'aliases' => array(),
             'reference' => '006aa5d32f887a4db4353b13b5b5095613e0611f',
+            'dev_requirement' => false,
+        ),
+        'jms/metadata' => array(
+            'pretty_version' => '2.5.2',
+            'version' => '2.5.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../jms/metadata',
+            'aliases' => array(),
+            'reference' => '3c5f34f622fdabe89af80c406d4733c8a77cc5d2',
             'dev_requirement' => false,
         ),
         'laminas/laminas-code' => array(
@@ -1341,6 +1354,15 @@
             'install_path' => __DIR__ . '/../twig/twig',
             'aliases' => array(),
             'reference' => 'a27fa056df8a6384316288ca8b0fa3a35fdeb569',
+            'dev_requirement' => false,
+        ),
+        'vich/uploader-bundle' => array(
+            'pretty_version' => '1.18.0',
+            'version' => '1.18.0.0',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../vich/uploader-bundle',
+            'aliases' => array(),
+            'reference' => 'c5250c8d6a072960250ce5130e68a5693b3b48dd',
             'dev_requirement' => false,
         ),
         'webmozart/assert' => array(

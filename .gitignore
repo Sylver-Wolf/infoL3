@@ -1,13 +1,8 @@
 
-<<<<<<< Updated upstream
-config/packages/doctrine.yaml
+migrations/
+
+var/cache/
 
 .env
 
-migrations/
-
-=======
->>>>>>> Stashed changes
-var/cache/
-
-var/log/dev.log
+config/packages/doctrine.yaml
