@@ -94,7 +94,6 @@ class ArticleController extends AbstractController
         ]);
     }
 
-
     /**
      * @Route("/article", name="article")
      */
