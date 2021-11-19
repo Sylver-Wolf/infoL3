@@ -3,14 +3,39 @@
 {% block title %} Editer un article {% endblock %}
 
 {% block body %}
+<style>
 
-    <h1>Editer un article </h1>
+#edit{
+    background: #DDDDDD;
+    padding: 2%;
+}
 
-    {{ form_start(form) }}
+h1{
+    font-size: 1.35em;
+    text-align:center;
+}
+form{
+    padding: 3%;
+}
 
-    {{ include('article/_form.html.twig') }}
-    <button class="btn btn-primary">
-        Editer
-    </button>
-    {{ form_end(form) }}
+body{
+    margin-left: 3%; 
+    margin-right: 3%;
+    
+}
+
+</style>
+<div class="row mt-3 justify-content-center">          
+    <div class="rounded col col-md-6" id="edit">
+        <h1>Editer un article </h1>
+
+        {{ form_start(form) }}
+
+        {{ include('article/_form.html.twig') }}
+        <button class="btn btn-primary align-content-center">
+            Editer
+        </button>
+        {{ form_end(form) }}
+    </div>
+</div>
 {% endblock %}

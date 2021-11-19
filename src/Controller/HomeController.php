@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,8 +15,26 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('home/index.html.twig');
-    }/* 
+
+        // Méthode findBy qui permet de récupérer les données avec des critères de filtre et de tri
+        $article = $this->getDoctrine()->getRepository(Article::class);
+        $article = $article->findBy( 
+            array(), 
+            array('id' => 'DESC'),
+            3,
+          ); 
+
+        return $this->render('home/index.html.twig', [
+            'articles' => $article,
+        ]);
+
+        return $this->render('home/index.html.twig', [
+            'controller_name' => 'ArticlesController',
+        ]);
+    }
+
+    
+    /* 
 
     /**
      * @Route("/", name="home")

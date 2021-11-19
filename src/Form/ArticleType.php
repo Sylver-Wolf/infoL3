@@ -24,8 +24,12 @@ class ArticleType extends AbstractType
                     "class" => "form-control"
                 ]
             ])
-            ->add('image', TextType::class)
-        ;
+
+            ->add('image',TextType::class, [
+                "attr" => [
+                    "class" => "form-control"
+                ]
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

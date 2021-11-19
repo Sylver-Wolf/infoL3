@@ -1,56 +1,63 @@
 {% extends 'base.html.twig' %}
 
+
 {% block navbar %} 
     {{ parent() }}
 {% endblock  %} 
 
-
 {% block body %}
+<style>
+h1{
+    padding: 3%;
+    font-size: 1.35em;
+}
 
+img{
+    padding: 2%;
+    object-position: center;
+    height:256px;
+    width:360px;
+}
+
+.text-center{
+    margin-left: 3%; 
+    margin-right: 3%;
+}
+
+</style>
 <main role="main">
-
-
-    </main>
-
+</main>
 <div class="text-center">
+  {% if is_granted('ROLE_USER') %}
   <a href="../salle"><button type="button" class="btn btn-outline col-md-2 " style="border-color: #DDDDDD; color: #DDDDDD;margin-top: 2em ;margin-bottom: 2em"> Jouer</button>
   </a>
+  {% else %}
+  <a href="../login"><button type="button" class="btn btn-outline col-md-2 " style="border-color: #DDDDDD; color: #DDDDDD;margin-top: 2em ;margin-bottom: 2em"> Se connecter pour jouer</button>
+  </a>
+  {% endif %}
+
+</div>
+<div class="row mt-3 text-center" style="background: #333333;">          
+        {% for article in articles %}
+        <div class="col col-md-4" >
+          <div class="col-md-12 container rounded" style="margin-bottom: 3%; margin-top: 3%;background: #DDDDDD;">
+            <a href="{{ path('article_show', {"id": article.id}) }}">
+                <h1>{{ article.title }} </h1>
+            </a>
+            <img src={{article.image}}/>
+            <div class="btn-group"style="margin: 2%;">
+          </div>
+          </div>
+        </div>           
+        {% endfor %}
+
+  
 </div>
 
+<div class="text-center">
+  <a href="../article"><button type="button" class="btn btn-outline col-md-2 " style="border-color: #DDDDDD; color: #DDDDDD;margin-top: 2em ;margin-bottom: 2em"> Consulter plus d'articles</button>
+  </a>
 
-<div class="row mt-3 text-center" style="background: #333333; margin-left: 3em; margin-right: 3em;">
-        <div class="col col-md-4">
-          <div class="col-md-12 container rounded-top" style="height: 15em; background: #DDDDDD;rounded-top;">
-            image article n
-          </div>
-        </div>
-        <div class="col col-md-4">
-          <div class="col-md-12 container rounded-top" style="height: 15em; background: #DDDDDD; rounded-top;">
-            image article n-1
-          </div>
-        </div>
-        <div class="col col-md-4">
-          <div class="col-md-12 container rounded-top" style="height: 15em; background: #DDDDDD;rounded-top;">
-            image article n-2 
-          </div>
-        </div> 
-        <div class="col col-md-4">
-          <div class="col-md-12 container rounded-bottom" style="height: 2em; background: #DDDDDD;">
-            lien article n
-          </div>
-        </div>
-        <div class="col col-md-4">
-          <div class="col-md-12 container rounded-bottom" style="height: 2em; background: #DDDDDD;">
-            lien article n-1
-          </div>
-        </div>
-        <div class="col col-md-4">
-          <div class="col-md-12 container rounded-bottom" style="height: 2em; background: #DDDDDD;">
-            lien article n-2 
-          </div>
-        </div>
 </div>
-
-
 
 {% endblock %}
