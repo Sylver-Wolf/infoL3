@@ -1,0 +1,10 @@
+
+config/packages/doctrine.yaml
+
+.env
+
+migrations/
+
+var/cache/
+
+var/log/dev.log
