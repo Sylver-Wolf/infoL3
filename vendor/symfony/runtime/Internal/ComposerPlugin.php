@@ -18,6 +18,7 @@ use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
 use Composer\Script\ScriptEvents;
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Runtime\RuntimeInterface;
 use Symfony\Component\Runtime\SymfonyRuntime;
 
 /**
@@ -96,6 +97,10 @@ class ComposerPlugin implements PluginInterface, EventSubscriberInterface
         }
 
         $runtimeClass = $extra['class'] ?? SymfonyRuntime::class;
+
+        if (SymfonyRuntime::class !== $runtimeClass && !is_subclass_of($runtimeClass, RuntimeInterface::class)) {
+            throw new \InvalidArgumentException(sprintf('Class "%s" listed under "extra.runtime.class" in your composer.json file '.(class_exists($runtimeClass) ? 'should implement "%s".' : 'not found.'), $runtimeClass, RuntimeInterface::class));
+        }
 
         unset($extra['class'], $extra['autoload_template']);
 

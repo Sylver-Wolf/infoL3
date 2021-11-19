@@ -36,7 +36,7 @@ class DockerComposeConfigurator extends AbstractConfigurator
 
     public function configure(Recipe $recipe, $config, Lock $lock, array $options = [])
     {
-        $installDocker = $this->composer->getPackage()->getExtra()['symfony']['docker'] ?? true;
+        $installDocker = $this->composer->getPackage()->getExtra()['symfony']['docker'] ?? false;
         if (!$installDocker) {
             return;
         }
@@ -45,9 +45,10 @@ class DockerComposeConfigurator extends AbstractConfigurator
         foreach ($this->normalizeConfig($config) as $file => $extra) {
             $dockerComposeFile = $this->findDockerComposeFile($rootDir, $file);
             if (null === $dockerComposeFile) {
-                $dockerComposeFile = $rootDir.'/'.$file;
+                $dockerComposeFileName = preg_replace('/\.yml$/', '.yaml', $file);
+                $dockerComposeFile = $rootDir.'/'.$dockerComposeFileName;
                 file_put_contents($dockerComposeFile, "version: '3'\n");
-                $this->write(sprintf('  Created <fg=green>"%s"</>', $file));
+                $this->write(sprintf('  Created <fg=green>"%s"</>', $dockerComposeFileName));
             }
             if ($this->isFileMarked($recipe, $dockerComposeFile)) {
                 continue;
@@ -167,6 +168,7 @@ class DockerComposeConfigurator extends AbstractConfigurator
 
         // COMPOSE_FILE not set, or doesn't contain the file we're looking for
         $dir = $rootDir;
+        $previousDir = null;
         do {
             // Test with the ".yaml" extension if the file doesn't end up with ".yml".
             if (

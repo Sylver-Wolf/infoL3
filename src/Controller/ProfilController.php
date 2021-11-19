@@ -22,6 +22,13 @@ class ProfilController extends AbstractController
      */
     public function index(): Response
     {
+        // Méthode findBy qui permet de récupérer les données avec des critères de filtre et de tri
+        $user = $this->getDoctrine()->getRepository(User::class);
+        $user = $user->findAll();
+
+        return $this->render('profil/index.html.twig', [
+            'profil' => $user,
+        ]);
         return $this->render('profil/index.html.twig', [
             'controller_name' => 'ProfilController',
         ]);
@@ -50,7 +57,6 @@ class ProfilController extends AbstractController
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
-
         if($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->flush();
@@ -61,5 +67,6 @@ class ProfilController extends AbstractController
             "form" => $form->createView()
         ]);
     }
+
 
 }

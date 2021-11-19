@@ -23,7 +23,7 @@ class DockerfileConfigurator extends AbstractConfigurator
 {
     public function configure(Recipe $recipe, $config, Lock $lock, array $options = [])
     {
-        $installDocker = $this->composer->getPackage()->getExtra()['symfony']['docker'] ?? true;
+        $installDocker = $this->composer->getPackage()->getExtra()['symfony']['docker'] ?? false;
         if (!$installDocker) {
             return;
         }

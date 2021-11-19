@@ -47,7 +47,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Messenger\Bridge\Doctrine\Transport\DoctrineTransportFactory;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractorInterface;
-use Symfony\Component\Validator\Mapping\Loader\LoaderInterface;
 
 use function array_intersect_key;
 use function array_keys;
@@ -497,10 +496,6 @@ class DoctrineExtension extends AbstractDoctrineExtension
 
             if (interface_exists(PropertyInfoExtractorInterface::class)) {
                 $this->loadPropertyInfoExtractor($name, $container);
-            }
-
-            if (! interface_exists(LoaderInterface::class)) {
-                continue;
             }
 
             $this->loadValidatorLoader($name, $container);

@@ -1,10 +1,8 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Doctrine\ORM\Query\Filter;
 
-use Doctrine\ORM\Exception\ORMException;
+use Doctrine\ORM\ORMException;
 
 use function sprintf;
 

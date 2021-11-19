@@ -1,11 +1,26 @@
 <?php
 
-declare(strict_types=1);
+/*
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * This software consists of voluntary contributions made by many individuals
+ * and is licensed under the MIT license. For more information, see
+ * <http://www.doctrine-project.org>.
+ */
 
 namespace Doctrine\ORM\Query;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Internal\SQLResultCasing;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Doctrine\ORM\Mapping\MappingException;
 use Doctrine\ORM\Utility\PersisterHelper;
@@ -22,8 +37,6 @@ use function strtolower;
  */
 class ResultSetMappingBuilder extends ResultSetMapping
 {
-    use SQLResultCasing;
-
     /**
      * Picking this rename mode will register entity columns as is,
      * as they are in the database. This can cause clashes when multiple
@@ -134,7 +147,7 @@ class ResultSetMappingBuilder extends ResultSetMapping
 
         foreach ($classMetadata->getColumnNames() as $columnName) {
             $propertyName = $classMetadata->getFieldName($columnName);
-            $columnAlias  = $this->getSQLResultCasing($platform, $columnAliasMap[$columnName]);
+            $columnAlias  = $platform->getSQLResultCasing($columnAliasMap[$columnName]);
 
             if (isset($this->fieldMappings[$columnAlias])) {
                 throw new InvalidArgumentException(sprintf(
@@ -153,7 +166,7 @@ class ResultSetMappingBuilder extends ResultSetMapping
 
                 foreach ($associationMapping['joinColumns'] as $joinColumn) {
                     $columnName  = $joinColumn['name'];
-                    $columnAlias = $this->getSQLResultCasing($platform, $columnAliasMap[$columnName]);
+                    $columnAlias = $platform->getSQLResultCasing($columnAliasMap[$columnName]);
                     $columnType  = PersisterHelper::getTypeOfColumn($joinColumn['referencedColumnName'], $targetClass, $this->em);
 
                     if (isset($this->metaMappings[$columnAlias])) {
@@ -267,7 +280,7 @@ class ResultSetMappingBuilder extends ResultSetMapping
      *
      * @param string $resultClassName
      *
-     * @return $this
+     * @return static
      */
     public function addNamedNativeQueryResultClassMapping(ClassMetadataInfo $class, $resultClassName)
     {
@@ -311,7 +324,7 @@ class ResultSetMappingBuilder extends ResultSetMapping
      *
      * @param string $resultSetMappingName
      *
-     * @return $this
+     * @return static
      */
     public function addNamedNativeQueryResultSetMapping(ClassMetadataInfo $class, $resultSetMappingName)
     {
@@ -360,7 +373,7 @@ class ResultSetMappingBuilder extends ResultSetMapping
      * @param mixed[] $entityMapping
      * @param string  $alias
      *
-     * @return $this
+     * @return static
      *
      * @throws MappingException
      * @throws InvalidArgumentException

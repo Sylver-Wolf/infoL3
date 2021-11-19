@@ -28,7 +28,10 @@ class ImportDoctrineCommand extends ImportCommand
             ->addOption('connection', null, InputOption::VALUE_OPTIONAL, 'The connection to use for this command');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    /**
+     * {@inheritDoc}
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
         trigger_deprecation(
             'doctrine/doctrine-bundle',

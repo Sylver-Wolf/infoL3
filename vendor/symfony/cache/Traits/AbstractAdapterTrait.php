@@ -208,11 +208,10 @@ trait AbstractAdapterTrait
      */
     public function getItem($key)
     {
-        $id = $this->getId($key);
-
-        if (isset($this->deferred[$key])) {
+        if ($this->deferred) {
             $this->commit();
         }
+        $id = $this->getId($key);
 
         $isHit = false;
         $value = null;
@@ -235,18 +234,14 @@ trait AbstractAdapterTrait
      */
     public function getItems(array $keys = [])
     {
+        if ($this->deferred) {
+            $this->commit();
+        }
         $ids = [];
-        $commit = false;
 
         foreach ($keys as $key) {
             $ids[] = $this->getId($key);
-            $commit = $commit || isset($this->deferred[$key]);
         }
-
-        if ($commit) {
-            $this->commit();
-        }
-
         try {
             $items = $this->doFetch($ids);
         } catch (\Exception $e) {
