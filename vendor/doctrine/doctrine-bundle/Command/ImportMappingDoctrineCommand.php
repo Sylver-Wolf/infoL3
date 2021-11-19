@@ -87,7 +87,10 @@ EOT
         );
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    /**
+     * {@inheritDoc}
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
         $type = $input->getArgument('mapping-type') ?: 'xml';
         if ($type === 'yaml') {

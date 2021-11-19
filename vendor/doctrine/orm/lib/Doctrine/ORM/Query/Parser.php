@@ -1,6 +1,22 @@
 <?php
 
-declare(strict_types=1);
+/*
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * This software consists of voluntary contributions made by many individuals
+ * and is licensed under the MIT license. For more information, see
+ * <http://www.doctrine-project.org>.
+ */
 
 namespace Doctrine\ORM\Query;
 
@@ -463,7 +479,7 @@ class Parser
             }
 
             $expr = $this->identVariableExpressions[$dqlAlias];
-            $key  = array_search($expr, $AST->selectClause->selectExpressions, true);
+            $key  = array_search($expr, $AST->selectClause->selectExpressions);
 
             unset($AST->selectClause->selectExpressions[$key]);
 
@@ -578,7 +594,7 @@ class Parser
      */
     private function isMathOperator(?array $token): bool
     {
-        return $token !== null && in_array($token['type'], [Lexer::T_PLUS, Lexer::T_MINUS, Lexer::T_DIVIDE, Lexer::T_MULTIPLY], true);
+        return $token !== null && in_array($token['type'], [Lexer::T_PLUS, Lexer::T_MINUS, Lexer::T_DIVIDE, Lexer::T_MULTIPLY]);
     }
 
     /**
@@ -607,8 +623,7 @@ class Parser
     {
         return in_array(
             $tokenType,
-            [Lexer::T_AVG, Lexer::T_MIN, Lexer::T_MAX, Lexer::T_SUM, Lexer::T_COUNT],
-            true
+            [Lexer::T_AVG, Lexer::T_MIN, Lexer::T_MAX, Lexer::T_SUM, Lexer::T_COUNT]
         );
     }
 
@@ -619,8 +634,7 @@ class Parser
     {
         return in_array(
             $this->lexer->lookahead['type'],
-            [Lexer::T_ALL, Lexer::T_ANY, Lexer::T_SOME],
-            true
+            [Lexer::T_ALL, Lexer::T_ANY, Lexer::T_SOME]
         );
     }
 
@@ -2543,8 +2557,8 @@ class Parser
 
         if (
             $peek !== null && (
-            in_array($peek['value'], ['=', '<', '<=', '<>', '>', '>=', '!='], true) ||
-            in_array($peek['type'], [Lexer::T_NOT, Lexer::T_BETWEEN, Lexer::T_LIKE, Lexer::T_IN, Lexer::T_IS, Lexer::T_EXISTS], true) ||
+            in_array($peek['value'], ['=', '<', '<=', '<>', '>', '>=', '!=']) ||
+            in_array($peek['type'], [Lexer::T_NOT, Lexer::T_BETWEEN, Lexer::T_LIKE, Lexer::T_IN, Lexer::T_IS, Lexer::T_EXISTS]) ||
             $this->isMathOperator($peek)
             )
         ) {
@@ -2948,7 +2962,7 @@ class Parser
     /**
      * StringExpression ::= StringPrimary | ResultVariable | "(" Subselect ")"
      *
-     * @return Subselect|Node|string
+     * @return Subselect|string
      */
     public function StringExpression()
     {
@@ -3064,7 +3078,7 @@ class Parser
         $lookaheadType = $this->lexer->lookahead['type'];
         $isDistinct    = false;
 
-        if (! in_array($lookaheadType, [Lexer::T_COUNT, Lexer::T_AVG, Lexer::T_MAX, Lexer::T_MIN, Lexer::T_SUM], true)) {
+        if (! in_array($lookaheadType, [Lexer::T_COUNT, Lexer::T_AVG, Lexer::T_MAX, Lexer::T_MIN, Lexer::T_SUM])) {
             $this->syntaxError('One of: MAX, MIN, AVG, SUM, COUNT');
         }
 
@@ -3094,7 +3108,7 @@ class Parser
         $lookaheadType = $this->lexer->lookahead['type'];
         $value         = $this->lexer->lookahead['value'];
 
-        if (! in_array($lookaheadType, [Lexer::T_ALL, Lexer::T_ANY, Lexer::T_SOME], true)) {
+        if (! in_array($lookaheadType, [Lexer::T_ALL, Lexer::T_ANY, Lexer::T_SOME])) {
             $this->syntaxError('ALL, ANY or SOME');
         }
 

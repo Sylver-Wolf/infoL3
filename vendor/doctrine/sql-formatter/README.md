@@ -25,7 +25,7 @@ Here is what the original History section says:
 ## Usage
 
 The `SqlFormatter` class has a method `format` which takes an SQL string as
-input and returns a formatted block.
+input and returns a formatted HTML block inside a `pre` tag.
 
 Sample usage:
 
@@ -44,12 +44,7 @@ echo (new SqlFormatter())->format($query);
 
 Output:
 
-<img src="examples/readme_format_html.svg" width="600" height="450" alt="formatted output with HTML Highlight">
-
-When you run php under cli and instantiated `SqlFormatter` without argument, highlighted with `CliHighlighter`.
-
-SqlFormatter constructor takes `Highlighter` implementations. `HtmlHighlighter` etc.
-
+![](http://jdorn.github.com/sql-formatter/format-highlight.png)
 
 ### Formatting Only
 
@@ -69,29 +64,7 @@ echo (new SqlFormatter(new NullHighlighter()))->format($query);
 
 Output:
 
-```
-SELECT
-  count(*),
-  `Column1`,
-  `Testing`,
-  `Testing Three`
-FROM
-  `Table1`
-WHERE
-  Column1 = 'testing'
-  AND (
-    (
-      `Column2` = `Column3`
-      OR Column4 >= NOW()
-    )
-  )
-GROUP BY
-  Column1
-ORDER BY
-  Column3 DESC
-LIMIT
-  5, 10
-```
+![](http://jdorn.github.com/sql-formatter/format.png)
 
 ### Syntax Highlighting Only
 
@@ -108,7 +81,7 @@ echo (new SqlFormatter())->highlight($query);
 
 Output:
 
-<img src="examples/readme_highlight_html.svg" width="800" height="150" alt="HTML Highlight output">
+![](http://jdorn.github.com/sql-formatter/highlight.png)
 
 ### Compress Query
 
@@ -127,7 +100,7 @@ line easily.
 ```
 
 ```php
-echo (new SqlFormatter())->compress($query);
+echo (new SqlFormatter())->compress($query)
 ```
 
 Output:

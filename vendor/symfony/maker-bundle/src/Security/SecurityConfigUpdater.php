@@ -190,7 +190,7 @@ final class SecurityConfigUpdater
         $newData = $this->manipulator->getData();
         if ('password_hashers' === $keyName && isset($newData['security']['encoders'])) {
             // fallback to "encoders" if the user already defined encoder config
-            $this->updatePasswordHashers($userConfig, $userClass, 'encoders');
+            $this->updatePasswordHashers($userClass, $userClass, 'encoders');
 
             return;
         }
