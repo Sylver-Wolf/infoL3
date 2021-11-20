@@ -3,10 +3,18 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\UserType;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Class ProfilController
+ * @package App\Controller
+ * @Route("/", name="")
+ */
 class ProfilController extends AbstractController
 {
     /**
@@ -59,4 +67,6 @@ class ProfilController extends AbstractController
             "form" => $form->createView()
         ]);
     }
+
+
 }

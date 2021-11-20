@@ -7,6 +7,7 @@
 
 {% endblock  %} 
 {% block body %}
+    {{ parent() }}
 <style>
 h1{
     padding: 3%;
@@ -17,9 +18,13 @@ img{
     padding: 2%;
 object-position: center;
     height:256px;
-    width:400px;
+    width:360px;
 }
 
+.text-center{
+    margin-left: 3%; 
+    margin-right: 3%;
+}
 </style>
 <main role="main">
 </main>
@@ -28,9 +33,9 @@ object-position: center;
         <div class="col col-md-4" >
           <div class="col-md-12 container rounded" style="margin-bottom: 3%; margin-top: 3%;background: #DDDDDD;">
             <a href="{{ path('article_show', {"id": article.id}) }}">
-                <h1>{{article.title}} </h1>
+                <h1>{{ article.title }} </h1>
             </a>
-            <img src={{ vich_uploader_asset(article) }}></img>
+            <img src={{article.image}}/>
             <div class="btn-group"style="margin: 2%;">
             {% if is_granted('ROLE_ADMIN') %}
             <a href="{{ path('article_edit', {"id": article.id}) }}" class="btn btn-outline-secondary">Editer</a>
