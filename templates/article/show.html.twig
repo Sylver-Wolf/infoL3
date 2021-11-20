@@ -3,6 +3,7 @@
 {% block title %}
 {{ article.title }}
 {% endblock %}
+
 {% block body %}
 <style>
 #article{
@@ -27,13 +28,13 @@ p{
 }
 </style>
 <div id="article">
-    <h1>{{ article.title }}</h1>
-    <img src={{article.image}} />
-    <small class="text-muted">Date de publication : {{ article.createdAt|date("d/m/Y") }}</small>
-    <p>
-        {{ article.description }}
-    </p>
-</div>
+        <h1>{{ article.title }}</h1>
+        <p>
+            {{ article.description }}
+        </p>
+            <img src={{ vich_uploader_asset(article) }}></img>
+        <small class="text-muted">Date de publication : {{ article.createdAt|date("d/m/Y") }}</small>
+    </div>
 {% endblock %}
 
 

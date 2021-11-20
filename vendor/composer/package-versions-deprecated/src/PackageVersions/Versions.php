@@ -52,6 +52,7 @@ final class Versions
   'doctrine/sql-formatter' => '1.1.1@56070bebac6e77230ed7d306ad13528e60732871',
   'egulias/email-validator' => '3.1.1@c81f18a3efb941d8c4d2e025f6183b5c6d697307',
   'friendsofphp/proxy-manager-lts' => 'v1.0.5@006aa5d32f887a4db4353b13b5b5095613e0611f',
+  'jms/metadata' => '2.5.2@3c5f34f622fdabe89af80c406d4733c8a77cc5d2',
   'laminas/laminas-code' => '3.4.1@1cb8f203389ab1482bf89c0e70a04849bacd7766',
   'laminas/laminas-eventmanager' => '3.4.0@a93fd278c97b2d41ebbce5ba048a24e3e6f580ba',
   'laminas/laminas-zendframework-bridge' => '1.4.0@bf180a382393e7db5c1e8d0f2ec0c4af9c724baf',
@@ -132,6 +133,7 @@ final class Versions
   'symfonycasts/verify-email-bundle' => 'v1.5.0@8c21aa9aa6b7123afed213e72485e8dad75e5dcf',
   'twig/extra-bundle' => 'v3.3.3@fa92b8301ff8878e45fe9f54ab7ad99872e080f3',
   'twig/twig' => 'v3.3.3@a27fa056df8a6384316288ca8b0fa3a35fdeb569',
+  'vich/uploader-bundle' => '1.18.0@c5250c8d6a072960250ce5130e68a5693b3b48dd',
   'webmozart/assert' => '1.10.0@6964c76c7804814a842473e0c8fd15bab0f18e25',
   'myclabs/deep-copy' => '1.10.2@776f831124e9c62e1a2c601ecc52e776d8bb7220',
   'nikic/php-parser' => 'v4.13.0@50953a2691a922aa1769461637869a0a2faa3f53',
@@ -168,10 +170,10 @@ final class Versions
   'symfony/phpunit-bridge' => 'v5.3.8@e9c0548d8d7abcd257f18f0adc0517895996a9c1',
   'symfony/web-profiler-bundle' => 'v5.3.8@9ba1e05fdc7a46979047ba6c8949bd35e3a386a5',
   'theseer/tokenizer' => '1.2.1@34a41e998c2183e22995f158c581e7b5e755ab9e',
-  'symfony/polyfill-ctype' => '*@799b07bf351adf3affdb30b5b568fff4552eab41',
-  'symfony/polyfill-iconv' => '*@799b07bf351adf3affdb30b5b568fff4552eab41',
-  'symfony/polyfill-php72' => '*@799b07bf351adf3affdb30b5b568fff4552eab41',
-  '__root__' => 'dev-master@799b07bf351adf3affdb30b5b568fff4552eab41',
+  'symfony/polyfill-ctype' => '*@154c32e0e634d0423ce956456f420446512d40f2',
+  'symfony/polyfill-iconv' => '*@154c32e0e634d0423ce956456f420446512d40f2',
+  'symfony/polyfill-php72' => '*@154c32e0e634d0423ce956456f420446512d40f2',
+  '__root__' => 'dev-master@154c32e0e634d0423ce956456f420446512d40f2',
 );
 
     private function __construct()

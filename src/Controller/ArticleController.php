@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 /**
  * Class ArticleController
@@ -17,6 +18,21 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ArticleController extends AbstractController
 {
+    /**
+     * @Route("/admin/upload/test", name="upload_test")
+     */
+    public function temporaryUploadAction(Request $request){
+        /** @var UploadedFile $uploadedFile */
+        $uploadedFile = $request->files->get('image');
+        $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
+        $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+        $newFilename = $originalFilename.'-'.uniqid().'.'.$uploadedFile->guessExtension();
+        dd($uploadedFile->move(
+            $destination,
+            $newFilename
+        ));
+    }
+
     /**
      * @Route("/{id}/show", name="article_show")
      * @param Article $article
@@ -41,6 +57,9 @@ class ArticleController extends AbstractController
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $uploadedFile */
+            $uploadedFile = $form['imageFile']->getData();
+
             $em = $this->getDoctrine()->getManager();
 
             $em->persist($article);
@@ -55,7 +74,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("article/{id}/edit", name="article_edit")
+     * @Route("/{id}/edit", name="article_edit")
      * @param Article $article
      * @param Request $request
      * @return Response
@@ -74,6 +93,7 @@ class ArticleController extends AbstractController
             "form" => $form->createView()
         ]);
     }
+
 
     /**
      * @Route("/article", name="article")

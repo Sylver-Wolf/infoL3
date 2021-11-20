@@ -44,7 +44,7 @@ img{
             <a href="{{ path('article_show', {"id": article.id}) }}">
                 <h1>{{ article.title }} </h1>
             </a>
-            <img src={{article.image}}/>
+            <img src={{ vich_uploader_asset(article) }}></img>
             <div class="btn-group"style="margin: 2%;">
           </div>
           </div>
