@@ -42,14 +42,14 @@ nav{
     <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
         <ul class="navbar-nav w-100 justify-content-center">
             <li class="nav-item active">
-                <a class="nav-link" href="../salle">ListeSalles</a>
+                <a class="nav-link" href={{path('salle_path')}}>ListeSalles</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="../article">Article</a>
+                <a class="nav-link" href={{path('article_path')}}>Article</a>
             </li>
             {% if is_granted('ROLE_USER') %}
             <li class="nav-item">
-                <a class="nav-link" href="../profil">Mon Profil</a>
+                <a class="nav-link" href={{path('profil')}}>Mon Profil</a>
             </li>
             {% endif %}
         </ul>
