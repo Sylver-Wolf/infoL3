@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Game{% endblock %}
+
+{% block body %}
+
+    <h1> {{ qTest.question }} </h1>
+
+    <div>
+    {{ form_start(GameController) }}
+        {% for child in GameController.Reponses %}
+            <div class="currency-label">
+                {{ form_widget(child) }}
+                {{ form_label(child, null) }}
+            </div>
+        {% endfor %}
+    {{ form_end(GameController) }}
+    </div>
+
+{% endblock %}
