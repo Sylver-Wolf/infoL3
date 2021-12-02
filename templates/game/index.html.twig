@@ -5,16 +5,28 @@
 {% block body %}
 
     <h1> {{ qTest.question }} </h1>
+    <div>
+    
+    {{ qTest.CorrectAnswer }}
 
+    {{ qTest.incorrect0 }}
+    {{ qTest.incorrect1 }}
+    {{ qTest.incorrect2 }}
+    
+    </div>
     <div>
     {{ form_start(GameController) }}
         {% for child in GameController.Reponses %}
-            <div class="currency-label">
+            <div class="AnswerLabel">
                 {{ form_widget(child) }}
                 {{ form_label(child, null) }}
             </div>
         {% endfor %}
     {{ form_end(GameController) }}
     </div>
+    <script>
+        document.getElementById("AnswerLabel").innerHTML = "<label class=\"required\">ENORME BOULARD</label>";
 
+
+    </script>
 {% endblock %}

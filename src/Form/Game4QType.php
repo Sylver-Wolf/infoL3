@@ -17,11 +17,12 @@ class Game4QType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        
+        //$qTest = $this->getDoctrine()->getRepository(Questions::class);
+        //$qTest = $qTest->findOneBy(['type' => 1, 'difficulty' => 1]);
 
-        $qTest = $this->getDoctrine()->getRepository(Questions::class);
-        $qTest = $qTest->findOneBy(['type' => 1, 'difficulty' => 1]);
+        //$A1 = qTest.question;
 
-        $A1 = qTest.question;
 
         $builder
 
@@ -30,10 +31,10 @@ class Game4QType extends AbstractType
                 ChoiceType::class, 
                 [
                     'choices' => [
-                        $A1 => 'A1',
-                        'A2' => 'A2',
-                        'A3' => 'A3',
-                        'A4' => 'A4',
+                        'A1' => ['id' => 'someID'],
+                        'A2' => ['id' => 'task-form'],
+                        'A3' => ['id' => 'task-form'],
+                        'A4' => ['id' => 'task-form'],
                     ],
                 'expanded' => true
                 ]

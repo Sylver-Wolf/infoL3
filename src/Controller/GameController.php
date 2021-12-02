@@ -22,7 +22,7 @@ class GameController extends AbstractController
         $q = $q->findAll();
 
         $qTest = $this->getDoctrine()->getRepository(Questions::class);
-        $qTest = $qTest->findOneBy(['type' => 1, 'difficulty' => 1]);
+        $qTest = $qTest->findOneBy(['type' => 0, 'difficulty' => 1]);
 
         $form = $this-> createForm(Game4QType::class);
 
