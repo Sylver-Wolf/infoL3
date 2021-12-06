@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Squiz : Créer un quiz{% endblock %}
+
+{% block navbar %}
+    {{ parent() }}
+{% endblock  %} 
+
+{% block body %}
+<style>
+
+#new{
+    background: #DDDDDD;
+    padding: 2%;
+    margin-top: 4em;
+}
+h1{
+    font-size: 1.6em;
+    color: #181818;
+    text-align:center;
+
+}
+</style>
+<div class="row mt-3 justify-content-center">          
+    <div class="rounded col col-md-6" id="new">
+        <h1>Génerer un quiz</h1>
+        {{ form_start(form) }}
+        {{ include('creer_salle/_formcreersalle.html.twig') }}
+        <button class="btn btn-primary">
+            Jouer
+        </button>
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock %}
