@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Entity\Questions;
 use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/home", name="home")
+     * @Route("/", name="home")
      */
     public function index(): Response
     {
@@ -23,9 +24,11 @@ class HomeController extends AbstractController
             array('id' => 'DESC'),
             3,
           ); 
-
+        $questions = $this->getDoctrine()->getRepository(Questions::class);
+        $questions = $questions->findAll();
         return $this->render('home/index.html.twig', [
             'articles' => $article,
+            'questions' => $questions,
         ]);
 
         return $this->render('home/index.html.twig', [

@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '154c32e0e634d0423ce956456f420446512d40f2',
+        'reference' => NULL,
         'name' => '__root__',
         'dev' => true,
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '154c32e0e634d0423ce956456f420446512d40f2',
+            'reference' => NULL,
             'dev_requirement' => false,
         ),
         'composer/package-versions-deprecated' => array(
@@ -639,12 +639,12 @@
             'dev_requirement' => false,
         ),
         'symfony/asset' => array(
-            'pretty_version' => 'v5.3.4',
-            'version' => '5.3.4.0',
+            'pretty_version' => 'v5.3.11',
+            'version' => '5.3.11.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/asset',
             'aliases' => array(),
-            'reference' => '9bd222a8fdd13ecca91384e403247103198f80a1',
+            'reference' => '547d3d91c759bae8e302630e68f6c4d415715bc3',
             'dev_requirement' => false,
         ),
         'symfony/browser-kit' => array(

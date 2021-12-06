@@ -2,45 +2,62 @@
 
 namespace App\Form;
 
-use App\Entity\Salle;
-use App\Entity\ThemeQuestion;
-use App\Entity\DifficulteQuestion;
+use App\Entity\Questions;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\IsTrue;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
 
 class CreerSalleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('theme', TextType::class, [
-                "attr" => [
-                    "class" => "form-control"
-                ]
+            ->add('category', ChoiceType::class, [
+                'choices'  => [
+                    'Entertainment' => [
+                        'Books' => 'Entertainment: Books',
+                        'Films' => 'Entertainment: Films',
+                        'Music' => 'Entertainment: Music',
+                        'Television' => 'Entertainment: Television',
+                        'Video Games' => 'Entertainment: Video Games',
+                        'Board Games' => 'Entertainment: Board Games',
+                        'Comics' => 'Entertainment: Comics',
+                    ],
+                    'Science' => [
+                        'Computers' => 'Science: Computers',
+                        'Mathematics' => 'Science: Mathematics',
+                        'Gadgets' => 'Science: Gadgets',
+                    ],
+                    'Autres' => [
+                        'General Knowledge' => 'General Knowledge',
+                        'Mythology' => 'Mythology',
+                        'Sports' => 'Sports',
+                        'History' => 'History',
+                        'Politics' => 'Politics',
+                        'Art' => 'Art',
+                        'Celebrities' => 'Celebrities',
+                        'Animals' => 'Animals',
+                        'Vehicles' => 'Vehicles',
+                    ],
+                ],
             ])
-            ->add('difficulte',TextareaType::class, [
-                "attr" => [
-                    "class" => "form-control"
-                ]
+            ->add('difficulty', ChoiceType::class, [
+                'choices'  => [
+                    'Facile' => 0,
+                    'Normale' => 1,
+                    'Difficile' => 2,
+                ],
             ])
-    ;
-    }
-
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults([
-            'data_class' => Salle::class,
-        ]);
-    }
+            ;
+        }
+        public function configureOptions(OptionsResolver $resolver)
+        {
+            $resolver->setDefaults([
+                'data_class' => Questions::class,
+            ]);
+        }
 }

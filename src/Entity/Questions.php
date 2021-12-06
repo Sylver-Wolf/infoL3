@@ -57,6 +57,11 @@ class Questions
      */
     private $incorrect2;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $idUser;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -154,6 +159,18 @@ class Questions
     public function setIncorrect2(?string $incorrect2): self
     {
         $this->incorrect2 = $incorrect2;
+
+        return $this;
+    }
+
+    public function getIdUser(): ?int
+    {
+        return $this->idUser;
+    }
+
+    public function setIdUser(?int $idUser): self
+    {
+        $this->idUser = $idUser;
 
         return $this;
     }

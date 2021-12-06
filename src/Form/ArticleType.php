@@ -26,7 +26,11 @@ class ArticleType extends AbstractType
                     "class" => "form-control"
                 ]
             ])
-            ->add('imageFile', VichImageType::class)
+            ->add('imageFile', VichImageType::class, [
+                "attr" => [
+                    "class" => "form-control"
+                ]
+            ])
 
         ;
     }

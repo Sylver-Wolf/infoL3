@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Egulias\EmailValidator\Result\InvalidEmail;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class RegistrationController extends AbstractController
@@ -29,9 +30,8 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-
+            $user->setRoles($user->getRoles());
             
-
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
@@ -39,7 +39,10 @@ class RegistrationController extends AbstractController
 
             return $this->redirectToRoute('home');
         }
+        if ($form->isSubmitted() && !$form->isValid()) {
+            $this->addFlash('invalid_message', 'oihetzjprstùnigrmdlk');
 
+        }
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
