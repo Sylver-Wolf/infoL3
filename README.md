@@ -16,4 +16,8 @@ Ce repos est un projet éducatif dont le but est de créer un jeu de trivia pour
 
 6 - Via terminal, dans le root du projet (dans le dossier nommé infoL3), executez la commande : "symfony serv"
 
-7 - Connectez vous a l'ip indiqué par le terminal a l'execution de la commande précédante
+7 - Toujours via terminal, créez la base de donnée en exécutant la commande suivante: “php bin/console doctrine:database:create”
+
+8 - Connectez vous à votre base de donnée, puis importez le dump fournis dans le dossier dump a la racine du projet.
+
+9 - Connectez vous à l'ip indiqué par le terminal à l'exécution de la commande permettant le lancement du serveur (soit un localhost:8000, soit 127.0.0.1:8000).
