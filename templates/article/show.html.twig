@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-{% endblock %}
+{% block title %}Squiz | Article{% endblock %}
 
 {% block body %}
 
@@ -98,7 +97,7 @@ object-position: center;
   <div class="col col-md-6">
     <div class="col-md-12 container rounded" id="article2">
       <div class="carte">
-        <p class="para">Article précedent</p>
+        <p class="para">Article suivant</p>
       </div>
         <a href="{{ path('article_show', {"id": article_list[loop.index0 +1].id}) }}"></href>
         <h1 class="article_title">{{article_list[loop.index0 +1].title|striptags|length > 30 ? article_list[loop.index0 +1].title|striptags|slice(0, 30) ~ '...' : article_list[loop.index0 +1].title|striptags }}</h1>

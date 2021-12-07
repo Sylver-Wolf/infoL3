@@ -87,6 +87,7 @@
 <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
 
 {% endblock %}
+
 {% block footer %}
 <!-- Footer -->
 <footer class="text-center text-muted" style="background-color: rgba(18, 18, 18, 1);">
@@ -143,27 +144,24 @@
             Liens pratiques
           </h6>
           <p>
-            <a href="#!" class="text-reset">Salles</a>
+            <a href="{{ path('creer_salle') }}" class="text-reset">Jouer</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Article</a>
+            <a href="{{ path('article_path') }}" class="text-reset">Article</a>
           </p>
           {% if is_granted('ROLE_USER') %}
           <p>
-            <a href="#!" class="text-reset">Profil</a>
+            <a href="{{ path('profil') }}" class="text-reset">Profil</a>
           </p>
           {% else %}
           <p>
-            <a href="#!" class="text-reset">Se connecter</a>
+            <a href="{{ path('app_login') }}" class="text-reset">Se connecter</a>
           </p>
           
           <p>
-            <a href="#!" class="text-reset">S'inscrire</a>
+            <a href="{{ path('app_register') }}" class="text-reset">S'inscrire</a>
           </p>
           {% endif %}
-          <p>
-            <a href="#!" class="text-reset">A propos</a>
-          </p>
         </div>
         <!-- Grid column -->
 

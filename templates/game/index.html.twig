@@ -2,7 +2,7 @@
 {% block head %}
 
 {% endblock %}
-{% block title %}Hello GameController!{% endblock %}
+{% block title %}Squiz | Jeu{% endblock %}
 
 {% block body %}
 <style>
@@ -68,9 +68,8 @@ var myQuestions = [];
 		{% endif %}
 	{% endif %}
 {% set liste_questions = [] %}
-{% set intervalle = questions|length / len %}
 {% for i in 0.. len - 1 %}
-{% set rng_val = random(i*intervalle,(i+1)*intervalle - 1) %}
+{% set rng_val = random(1,questions|length - 1) %}
 {% if questions[rng_val].type == 0 %}
 {% set elements = [questions[rng_val].correctAnswer|raw , questions[rng_val].incorrect0|raw , questions[rng_val].incorrect1|raw , questions[rng_val].incorrect2|raw] %}
 {% set correct = ['a','b','c','d'] %}
